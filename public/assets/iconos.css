@@ -1,0 +1,23 @@
+.iconos {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    transition: all 0.3s ease;
+}
+
+.iconos:hover {
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+.actions {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.actions i {
+    margin-right: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
