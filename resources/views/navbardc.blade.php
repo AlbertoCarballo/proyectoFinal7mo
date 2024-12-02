@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <!--logo-->
-                <a class="navbar-brand" href="#">Mi Clínica</a>
+                <a class="navbar-brand" href="home">Mi Clínica</a>
 
                 <!-- Botón para dispositivos pequeños -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,12 +35,12 @@
                                 Usuario
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="perfil">Perfil</a></li>
                                 <li><a class="dropdown-item" href="#">Configuraciones</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Mis citas</a></li>
+                                <li><a class="dropdown-item" href="mis-citas-dc">Mis citas</a></li>
                             </ul>
                         </li>
                     </ul>
