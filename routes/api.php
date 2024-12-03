@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PacientesController;
 use App\Http\Controllers\Api\DoctoresController;
 use App\Http\Controllers\Api\EspecialidadesController;
+use App\Http\Controllers\Api\authController;
+
+//Ruta Auth
+Route::post("/auth",[authController::class, 'login']);
 
 //Rutas para Pacientes
 Route::get('/pacientes', [PacientesController::class, 'getPacientes']);
