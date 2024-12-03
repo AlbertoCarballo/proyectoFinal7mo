@@ -23,7 +23,7 @@ class authcontroller extends Controller
                 "error" => $validator->errors(),
                 "status" => 400
             ];
-            return response()->json($data, 400);
+            return redirect('/');
         }
 
         $doctor = Doctores::where('correo_electronico', $request->correo_electronico)->first();
@@ -38,9 +38,8 @@ class authcontroller extends Controller
                 "data" => $doctor,
                 "status" => 200
             ];
-            return response()->json($data, 200);
-        }
-        elseif ($paciente && $paciente->contrasena === $request->contrasena) {
+            return redirect('/home');
+        } elseif ($paciente && $paciente->contrasena === $request->contrasena) {
             Session::put('usuario_id', $paciente->id);
             Session::put('tipo_usuario', 'paciente');
 
@@ -49,14 +48,14 @@ class authcontroller extends Controller
                 "data" => $paciente,
                 "status" => 200
             ];
-            return response()->json($data, 200);
+            return redirect('/home');
         }
         else {
             $data = [
                 "message" => "Credenciales incorrectas",
                 "status" => 401
             ];
-            return response()->json($data, 401);
+            return redirect('/');
         }
     }
 }
