@@ -3,27 +3,37 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pacientes;
+use App\Models\Doctores;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
-
-class PacientesController extends Controller
+class DoctoresController extends Controller
 {
-    public function getPacientes(){
-        $pacientes=Pacientes::all();
-        return response()->json([
-            'status' => 'success',
-            'data' => $pacientes
-        ], 200);
+    public function getDoctores(){
+        try {
+            $doctores=Doctores::all();
+            return response()->json([
+                'status' => 'success',
+                'data' => $doctores
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Captura excepciones y muestra detalles en el log
+            \Log::error('Error al obtener paciente: ' . $e->getMessage());
+    
+            return response()->json([
+                'message' => 'Ocurrió un error en el servidor',
+                'status' => 500
+            ], 500);
+            }
     }
 
-    public function getSpecificPacientes($id){
+    public function getSpecificDoctor($id){
         try {
-        $pacientes = Pacientes::find($id);
+        $doctor = Doctores::find($id);
 
-        if (!$pacientes) {
+        if (!$doctor) {
             $data = [
                 'message' => 'Paciente no encontrado',
                 'status' => 404
@@ -34,7 +44,7 @@ class PacientesController extends Controller
 
         $data = [
             'message' => 'Paciente encontrado',
-            'data' => $pacientes,
+            'data' => $doctor,
             'status' => 200
         ];
 
@@ -51,23 +61,20 @@ class PacientesController extends Controller
         }
     }
 
-    public function postPacientes(Request $request)
+    public function postDoctor(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
             "nombre" => "required",
             "primer_apellido" => "required",
             "segundo_apellido",
-            "fecha_nac" => "required",
             "correo_electronico" => "required|email",
             "contrasena" => "required",
-            "genero" => "required",
-            "peso" => "required",
-            "estatura" => "required",
-            "tipo_sangre" => "required",
-            "numero_telefonico" => "required",
-            "numero_emergencia" => "",
-            "nss" => "required",
+            'id_especialidad' => 'required|exists:especialidades,id_especialidad',
+            "consultorio" => "required",
+            "cedula_profesional" => "required",
+            "rfc" => "required",
+            "alama_mater" => "required"
         ]);
     
         if ($validator->fails()) {
@@ -80,25 +87,22 @@ class PacientesController extends Controller
         }
     
         try {
-            $pacientes = Pacientes::create([
+            $doctor = Doctores::create([
                 "nombre" => $request->nombre,
                 "primer_apellido" => $request->primer_apellido,
                 "segundo_apellido" => $request->segundo_apellido,
-                "fecha_nac" => $request->fecha_nac,
                 "correo_electronico" => $request->correo_electronico,
-                "contrasena" => $request->contrasena,  // Encriptar la contraseña
-                "genero" => $request->genero,
-                "peso" => $request->peso,
-                "estatura" => $request->estatura,
-                "tipo_sangre" => $request->tipo_sangre,
-                "numero_telefonico" => $request->numero_telefonico,
-                "numero_emergencia" => $request->numero_emergencia,
-                "nss" => $request->nss,
+                "contrasena" => $request->contrasena,
+                "id_especialidad" => $request->id_especialidad,
+                "consultorio" => $request->consultorio,
+                "cedula_profesional" => $request->cedula_profesional,
+                "rfc" => $request->rfc,
+                "alama_mater" => $request->alama_mater,
             ]);
     
             return response()->json([
                 'message' => 'Paciente creado exitosamente',
-                'data' => $pacientes,
+                'data' => $doctor,
                 'status' => 200
             ], 200);
     
@@ -111,12 +115,12 @@ class PacientesController extends Controller
         }
     }
 
-    public function updatePacientes(Request $request, $id){
+    public function updateDoctor(Request $request, $id){
 
         try {
-            $pacientes = Pacientes::find($id);
+            $doctor = Doctores::find($id);
 
-        if (!$pacientes) {
+        if (!$doctor) {
             $data=[
                 'message' => 'Paciente no encontrado',
                 'status' => 404
@@ -128,14 +132,12 @@ class PacientesController extends Controller
             "nombre" => "required",
             "primer_apellido" => "required",
             "segundo_apellido",
-            "fecha_nac" => "required",
             "correo_electronico" => "required|email",
             "contrasena" => "required",
-            "genero" => "required",
-            "peso" => "required",
-            "estatura" => "required",
-            "numero_telefonico" => "required",
-            "numero_emergencia" => "",
+            "consultorio" => "required",
+            "cedula_profesional" => "required",
+            "rfc" => "required",
+            "alama_mater" => "required"
         ]);
 
         if ($validator->fails()) {
@@ -146,21 +148,19 @@ class PacientesController extends Controller
             ];
             return response()->json($data, 400);
         }
-        $pacientes->nombre = $request->nombre;
-        $pacientes->primer_apellido = $request->primer_apellido;
-        $pacientes->segundo_apellido = $request->segundo_apellido;
-        $pacientes->fecha_nac = $request->fecha_nac;
-        $pacientes->correo_electronico = $request->correo_electronico;
-        $pacientes->contrasena = $request->contrasena;
-        $pacientes->genero = $request->genero;
-        $pacientes->peso = $request->peso;
-        $pacientes->estatura = $request->estatura;
-        $pacientes->numero_telefonico = $request->numero_telefonico;
-        $pacientes->numero_emergencia=$request->numero_emergencia;
-        $pacientes->save();
+        $doctor->nombre = $request->nombre;
+        $doctor->primer_apellido = $request->primer_apellido;
+        $doctor->segundo_apellido = $request->segundo_apellido;
+        $doctor->correo_electronico = $request->correo_electronico;
+        $doctor->contrasena = $request->contrasena;
+        $doctor->consultorio = $request->consultorio;
+        $doctor->cedula_profesional = $request->cedula_profesional;
+        $doctor->rfc = $request->rfc;
+        $doctor->alama_mater = $request->alama_mater;
+        $doctor->save();
         $data=[
             'message' => 'Paciente actualizado exitosamente',
-            'data' => $pacientes,
+            'data' => $doctor,
             'status' => 200
         ];
         return response()->json($data, 200);
@@ -171,17 +171,17 @@ class PacientesController extends Controller
         \Log::error('Error al obtener paciente: ' . $e->getMessage());
 
         return response()->json([
-            'message' => 'Ocurrió un error en el servidor',
+            'message' => $e,
             'status' => 500
         ], 500);
         }
     }
 
-    public function deletePaciente($id){
+    public function deleteDoctor($id){
         try {
-            $pacientes = Pacientes::find($id);
+            $doctor = Doctores::find($id);
 
-            if (!$pacientes) {
+            if (!$doctor) {
             $data=[
                 'message' => 'Paciente no encontrado',
                 'status' => 404
@@ -189,7 +189,7 @@ class PacientesController extends Controller
 
             return response()->json($data, 404);
             }
-            $pacientes->delete();
+            $doctor->delete();
             $data = [
                 'message' => 'Paciente eliminado exitosamente',
                 'status' => 200
@@ -203,13 +203,9 @@ class PacientesController extends Controller
         \Log::error('Error al obtener paciente: ' . $e->getMessage());
 
         return response()->json([
-            'message' => 'Ocurrió un error en el servidor',
+            'message' => $e,
             'status' => 500
         ], 500);
         }
     }
-    
-
-
-    
 }
