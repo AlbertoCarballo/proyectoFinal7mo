@@ -20,7 +20,7 @@ class DoctoresController extends Controller
     
         } catch (\Exception $e) {
             // Captura excepciones y muestra detalles en el log
-            \Log::error('Error al obtener paciente: ' . $e->getMessage());
+            Log::error('Error al obtener paciente: ' . $e->getMessage());
     
             return response()->json([
                 'message' => 'Ocurrió un error en el servidor',
@@ -52,7 +52,7 @@ class DoctoresController extends Controller
 
     } catch (\Exception $e) {
         // Captura excepciones y muestra detalles en el log
-        \Log::error('Error al obtener paciente: ' . $e->getMessage());
+        Log::error('Error al obtener paciente: ' . $e->getMessage());
 
         return response()->json([
             'message' => 'Ocurrió un error en el servidor',
@@ -107,7 +107,7 @@ class DoctoresController extends Controller
             ], 200);
     
         } catch (\Exception $e) {
-            \Log::error('Error al crear paciente: ' . $e->getMessage());
+            Log::error('Error al crear paciente: ' . $e->getMessage());
             return response()->json([
                 'message' => $e,
                 'status' => 500
@@ -168,7 +168,7 @@ class DoctoresController extends Controller
 
     } catch (\Exception $e) {
         // Captura excepciones y muestra detalles en el log
-        \Log::error('Error al obtener paciente: ' . $e->getMessage());
+        Log::error('Error al obtener paciente: ' . $e->getMessage());
 
         return response()->json([
             'message' => $e,
@@ -200,7 +200,7 @@ class DoctoresController extends Controller
 
     } catch (\Exception $e) {
         // Captura excepciones y muestra detalles en el log
-        \Log::error('Error al obtener paciente: ' . $e->getMessage());
+        Log::error('Error al obtener paciente: ' . $e->getMessage());
 
         return response()->json([
             'message' => $e,

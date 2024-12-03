@@ -40,7 +40,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Historial</a></li>
+                                <li><a class="dropdown-item" href="mis-consultas">Historial</a></li>
                             </ul>
                         </li>
                         <!-- Consultas (desplegable) -->
@@ -50,7 +50,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="crear-cita">Crear cita</a></li>
-                                <li><a class="dropdown-item" href="mis-consultas">Visualizar</a></li>
+                                <li><a class="dropdown-item" href="vista-consultas">Visualizar</a></li>
                                 <li><a class="dropdown-item" href="cancelar-consulta">Cancelar</a></li>
                             </ul>
                         </li>

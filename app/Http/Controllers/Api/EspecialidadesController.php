@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
-class especialidadesController extends Controller
+class EspecialidadesController extends Controller
 {
     public function getEspecialidades(){
         try {
@@ -20,7 +20,7 @@ class especialidadesController extends Controller
     
         } catch (\Exception $e) {
             // Captura excepciones y muestra detalles en el log
-            \Log::error('Error al obtener paciente: ' . $e->getMessage());
+            Log::error('Error al obtener paciente: ' . $e->getMessage());
     
             return response()->json([
                 'message' => 'Ocurrió un error en el servidor',
