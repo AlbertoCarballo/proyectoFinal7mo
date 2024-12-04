@@ -51,7 +51,7 @@
                         </li>
                         <!-- Consultas -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="vista-consultas">
                                 <i class="fas fa-briefcase-medical pe-2"></i> Consultas
                             </a>
                         </li>
