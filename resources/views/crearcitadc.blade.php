@@ -1,4 +1,4 @@
-@extends('navbardc')
+@extends('navbar')
 
 <link rel="stylesheet" href="{{ asset('/assets/style.css') }}">
 
@@ -38,60 +38,19 @@
                                     </div>
                                 </div>
 
-                                <!-- Fila de Teléfono y Correo -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="telefono">Teléfono *</label>
-                                            <input id="telefono" type="text" name="telefono" class="form-control" placeholder="Teléfono *" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="correo">Correo *</label>
-                                            <input id="correo" type="email" name="correo" class="form-control" placeholder="Correo *" required="required">
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- Fila de Especialidad y Fecha -->
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="especialidad">Especialidad *</label>
-                                            <select id="especialidad" name="especialidad" class="form-control" required="required">
-                                                <option value="">Seleccionar especialidad</option>
-                                                <option value="cardiologia">Cardiología</option>
-                                                <option value="dermatologia">Dermatología</option>
-                                                <option value="neurologia">Neurología</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fecha">Fecha *</label>
                                             <input id="fecha" type="date" name="fecha" class="form-control" required="required">
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Fila de Horario y Doctor -->
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="horario">Horario *</label>
                                             <input id="horario" type="time" name="horario" class="form-control" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="doctor">Doctor *</label>
-                                            <select id="doctor" name="doctor" class="form-control" required="required">
-                                                <option value="">Seleccionar doctor</option>
-                                                <option value="dr_juan_perez">Dr. Juan Pérez</option>
-                                                <option value="dr_maria_lopez">Dra. María López</option>
-                                                <option value="dr_carlos_gomez">Dr. Carlos Gómez</option>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -106,6 +65,9 @@
                                     </div>
                                 </div>
 
+
+
+                                <!-- CONSULTORIO CAMBIAR AL TEXT -->
                                 <!-- Fila de Consultorio -->
                                 <div class="row">
                                     <div class="col-md-6">
@@ -119,10 +81,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Fila de Estado y Prioridad -->
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="estado">Estado *</label>
@@ -132,27 +91,6 @@
                                                 <option value="confirmada">Confirmada</option>
                                                 <option value="cancelada">Cancelada</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="prioridad">Prioridad *</label>
-                                            <select id="prioridad" name="prioridad" class="form-control" required="required">
-                                                <option value="">Seleccionar prioridad</option>
-                                                <option value="alta">Alta</option>
-                                                <option value="media">Media</option>
-                                                <option value="baja">Baja</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Fila de Observaciones -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="observaciones">Observaciones</label>
-                                            <textarea id="observaciones" name="observaciones" class="form-control" placeholder="Observaciones adicionales." rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
