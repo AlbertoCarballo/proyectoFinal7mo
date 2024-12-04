@@ -1,4 +1,4 @@
-@extends('navbardc')
+@extends('navbar')
 
 <link rel="stylesheet" href="{{ asset('/assets/style.css') }}">
 @section('content')
