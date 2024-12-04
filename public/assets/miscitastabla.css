@@ -1,0 +1,49 @@
+/* Estilos generales para los botones en la tabla */
+.table .btn {
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.table .btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.table .btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.table .btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.table .btn:hover {
+    opacity: 0.8;
+}
+
+.table .form-select {
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/* Agrega un scroll a la tabla */
+.table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Para el scroll en la tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background-color: #343a40;
+    color: white;
+}

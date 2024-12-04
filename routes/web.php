@@ -49,3 +49,7 @@ Route::get('/cancelar-consulta', function () {
 Route::get('/vista-consultas', function () {
     return view('vista-consultas');
 });
+
+Route::get('/resumen', function () {
+    return view('resumen');
+});

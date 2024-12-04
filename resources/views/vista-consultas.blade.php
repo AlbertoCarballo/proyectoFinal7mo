@@ -2,7 +2,7 @@
 
 @section('content')
 
-<!--seccion visualizar-->
+<!--seccion consultas-->
 <div class="mt-5">
     <h2 class="text-center mb-4" style="color: #00254d;">Historial de Consultas</h2>
 
