@@ -1,60 +1,45 @@
-@extends ('navbardc')
-
+@extends('navbar')
+<link rel="stylesheet" href="{{ asset('/assets/identificacion.css') }}">
 @section('content')
 <div class="container mt-5">
-    <!-- Perfil del Doctor -->
-    <h2 class="text-center mb-4" style="color: #00254d;">Datos del Doctor</h2>
-    <div class="row">
-        <div class="col-md-4 d-flex justify-content-end">
-            <div class="profile-picture">
-                <img src="https://via.placeholder.com/350" alt="Foto de perfil" class="img-fluid rounded-3" style="width: 350px; height: 350px; object-fit: cover;">
+    <!-- identificacion del Doctor -->
+    <h2 class="text-center mb-4" style="color: #00254d;">Identificación del Doctor</h2>
+    <div class="card">
+        <div class="card-title">Dr. Juan Pérez Gómez</div>
+        <div class="row g-0">
+            <!-- Imagen del Doctor -->
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="https://img.freepik.com/foto-gratis/hombre-mediano-que-trabaja-como-enfermera_23-2151061667.jpg?t=st=1733287631~exp=1733291231~hmac=f18054176bcd21f32cbd5bcc9a86418d9fd5438efe1131d690164fbd38d67fe7&w=360" alt="Foto del Doctor">
             </div>
-        </div>
-        <div class="col-md-8">
-            <!-- Datos del doctor -->
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Nombre</label>
-                        <p class="form-control-plaintext">Juan</p>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Primer apellido</label>
-                        <p class="form-control-plaintext">Pérez</p>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Segundo apellido</label>
-                        <p class="form-control-plaintext">Gómez</p>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Correo Electrónico</label>
-                        <p class="form-control-plaintext">juan.perez@doctores.com</p>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Consultorio</label>
-                        <p class="form-control-plaintext">Consultorio 3</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Especialidad</label>
-                        <p class="form-control-plaintext">Cardiología</p>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Cédula Profesional</label>
-                        <p class="form-control-plaintext">1234567890</p>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">RFC</label>
-                        <p class="form-control-plaintext">JUAP870101HDFMNS00</p>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Alma Mater</label>
-                        <p class="form-control-plaintext">Universidad Nacional Autónoma de México (UNAM)</p>
+            <!-- Datos del Doctor -->
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">Especialidad:</label>
+                            <p class="form-control-plaintext">Cardiología</p>
+
+                            <label class="form-label">Consultorio:</label>
+                            <p class="form-control-plaintext">Consultorio 3</p>
+
+                            <label class="form-label">Correo Electrónico:</label>
+                            <p class="form-control-plaintext">juan.perez@doctores.com</p>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Cédula Profesional:</label>
+                            <p class="form-control-plaintext">1234567890</p>
+
+                            <label class="form-label">RFC:</label>
+                            <p class="form-control-plaintext">JUAP870101HDFMNS00</p>
+
+                            <label class="form-label">Alma Mater:</label>
+                            <p class="form-control-plaintext">UNAM</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="card-footer">Fecha de emisión: {{ now()->format('d/m/Y') }}</div>
     </div>
 </div>
 @endsection
