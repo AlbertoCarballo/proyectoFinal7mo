@@ -208,6 +208,9 @@ class PacientesController extends Controller
         ], 500);
         }
     }
+
+   
+
     
 
 

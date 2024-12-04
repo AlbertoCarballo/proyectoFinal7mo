@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class authcontroller extends Controller
+class AuthController extends Controller
 {
     public function login(Request $request)
     {
@@ -18,45 +18,21 @@ class authcontroller extends Controller
         ]);
 
         if ($validator->fails()) {
-            $data = [
-                "message" => "Error de validación de datos",
-                "error" => $validator->errors(),
-                "status" => 400
-            ];
-            return redirect('/');
+            return redirect('/')->withErrors($validator)->withInput();
         }
 
         $doctor = Doctores::where('correo_electronico', $request->correo_electronico)->first();
-        $paciente = Pacientes::where('correo_electronico', $request->correo_electronico)->first();
-
         if ($doctor && $doctor->contrasena === $request->contrasena) {
-            Session::put('usuario_id', $doctor->id);
+            Session::put('user_id', $doctor->id_doctor);
             Session::put('tipo_usuario', 'doctor');
-
-            $data = [
-                "message" => "Inicio de sesión exitoso",
-                "data" => $doctor,
-                "status" => 200
-            ];
-            return redirect('/home');
-        } elseif ($paciente && $paciente->contrasena === $request->contrasena) {
-            Session::put('usuario_id', $paciente->id);
-            Session::put('tipo_usuario', 'paciente');
-
-            $data = [
-                "message" => "Inicio de sesión exitoso",
-                "data" => $paciente,
-                "status" => 200
-            ];
             return redirect('/home');
         }
         else {
-            $data = [
-                "message" => "Credenciales incorrectas",
-                "status" => 401
-            ];
-            return redirect('/');
+            return redirect('/')->with('error', 'Credenciales incorrectas');
         }
     }
+    
+
 }
+
 

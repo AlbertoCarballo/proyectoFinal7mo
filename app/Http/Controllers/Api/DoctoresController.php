@@ -19,7 +19,6 @@ class DoctoresController extends Controller
             ], 200);
     
         } catch (\Exception $e) {
-            // Captura excepciones y muestra detalles en el log
             Log::error('Error al obtener paciente: ' . $e->getMessage());
     
             return response()->json([
@@ -167,7 +166,6 @@ class DoctoresController extends Controller
 
 
     } catch (\Exception $e) {
-        // Captura excepciones y muestra detalles en el log
         Log::error('Error al obtener paciente: ' . $e->getMessage());
 
         return response()->json([
@@ -199,7 +197,6 @@ class DoctoresController extends Controller
 
 
     } catch (\Exception $e) {
-        // Captura excepciones y muestra detalles en el log
         Log::error('Error al obtener paciente: ' . $e->getMessage());
 
         return response()->json([
@@ -207,5 +204,22 @@ class DoctoresController extends Controller
             'status' => 500
         ], 500);
         }
+    }
+
+    public function getDoctorByCorreo($correo)
+    {
+        try {
+            $doctor = Doctores::where('correo_electronico', $correo)->first();
+    
+            if ($doctor) {
+                return response()->json($doctor);
+            }
+        } catch (\Exception $e) {
+            \Log::error('Error al obtener paciente: ' . $e->getMessage());
+            return response()->json([
+                'message' => $e,
+                'status' => 400
+            ], 400);
+            }
     }
 }
