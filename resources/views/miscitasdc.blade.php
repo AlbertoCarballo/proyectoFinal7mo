@@ -8,9 +8,12 @@
 
     <!-- Botón para programar cita -->
     <div class="text-center mb-4">
-        <button class="btn btn-primary btn-lg" onclick="crearCita()" style="border-radius: 30px; padding: 10px 40px;">
+        <!-- <button class="btn btn-primary btn-lg" onclick="crearCita()" style="border-radius: 30px; padding: 10px 40px;">
             <i class="fas fa-calendar-plus me-2"></i> Programar Cita
-        </button>
+        </button> -->
+        <a class="btn btn-primary btn-lg" href="crear-cita" style="border-radius: 30px; padding: 10px 40px;">
+            <i class="fas fa-calendar-plus me-2"></i> Programar Cita
+        </a>
     </div>
 
     <!-- Tabla de citas médicas -->

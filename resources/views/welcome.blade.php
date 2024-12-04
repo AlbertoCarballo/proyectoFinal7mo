@@ -36,7 +36,7 @@
                                 </div>
 
                                 <div class="d-grid mb-2">
-                                    <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Login</button>
+                                    <a class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" href="home">Login</a>
                                 </div>
 
                                 <a class="d-block text-center mt-2 small" href="#">No tienes una cuenta? Registrate</a>

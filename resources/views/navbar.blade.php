@@ -46,7 +46,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="mis-consultas"><i class="fas fa-history pe-2"></i> Historial</a></li>
+                                <li><a class="dropdown-item" href="mis-citas"><i class="fas fa-history pe-2"></i> Historial</a></li>
                             </ul>
                         </li>
                         <!-- Consultas -->
@@ -59,7 +59,7 @@
 
                     <!-- Botón Cerrar sesión -->
                     <div class="d-flex">
-                        <a class="btn btn-sm btn-outline-danger" href="#">
+                        <a class="btn btn-sm btn-outline-danger" href="/">
                             <i class="fas fa-sign-out-alt pe-2"></i> Cerrar sesión
                         </a>
                     </div>

@@ -54,7 +54,7 @@
                         <li>Historial médico</li>
                     </ul>
                     <!-- Botón -->
-                    <a href="#" class="btn btn-primary btn-sm">Ver todos ></a>
+                    <a href="vista-consultas" class="btn btn-primary btn-sm">Ver todos ></a>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                         <li>Registrar paciente</li>
                         <li>Servicios adicionales</li>
                     </ul>
-                    <a href="#" class="btn btn-success btn-sm">Ver todos ></a>
+                    <a href="crear-cita" class="btn btn-success btn-sm">Ver todos ></a>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
                         <li>Editar consultas</li>
                         <li>Eliminar registros</li>
                     </ul>
-                    <a href="#" class="btn btn-warning btn-sm">Ver todos ></a>
+                    <a href="editar-cita" class="btn btn-warning btn-sm">Ver todos ></a>
                 </div>
             </div>
         </div>
