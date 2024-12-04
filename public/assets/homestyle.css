@@ -1,0 +1,10 @@
+.custom-carousel {
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.custom-carousel img {
+    object-fit: cover;
+    height: 350px;
+    border-radius: 15px;
+}

@@ -1,114 +1,95 @@
 @extends('navbar')
+<link rel="stylesheet" href="{{ asset('/assets/homestyle.css') }}">
 @section('content')
 <div class="container">
-    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Bienvenido a la Clínica Salud y Bienestar</h1>
-            <p class="lead my-3">Conozca nuestros servicios de atención médica de calidad, diseñados para brindarle la mejor experiencia en salud.</p>
-            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Leer más...</a></p>
+    <!-- Carrusel -->
+    <div id="carouselExample" class="carousel slide custom-carousel" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Imágenes del carrusel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Imagen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1579684453401-966b11832744?q=80&w=1791&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Imagen 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1609188076864-c35269136b09?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="Imagen 3">
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+
+        <!-- Contenido superpuesto sobre el carrusel -->
+        <div class="carousel-caption d-none d-md-block text-start custom-caption">
+            <h1 class="display-6 fw-bold">Bienvenido a la Clínica Salud y Bienestar</h1>
+            <p class="lead fw-bold">Conozca nuestros servicios de atención médica de calidad, diseñados para brindarle la mejor experiencia en salud.</p>
         </div>
     </div>
 
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-primary">Servicios</strong>
-                    <h3 class="mb-0">
-                        <a class="text-dark" href="#">Consulta General</a>
-                    </h3>
-                    <div class="mb-1 text-muted">Ene 15, 2024</div>
-                    <p class="card-text mb-auto">Ofrecemos consultas médicas generales para toda la familia. Nuestros profesionales están comprometidos con su bienestar.</p>
-                    <a href="#">Leer más</a>
+    <div class="row text-center mb-4 mt-5">
+        <!-- Visualizar -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100 p-3">
+                <div class="card-body">
+                    <!-- Ícono pequeño -->
+                    <img src="https://i.pinimg.com/736x/79/ad/0a/79ad0a1cc208e60c15c612c84aed6295.jpg" alt="Visualizar" class="img-fluid mb-3" style="width: 60px;">
+                    <h5 class="card-title font-weight-bold">Visualizar</h5>
+                    <!-- Texto simple -->
+                    <ul class="list-unstyled text-muted">
+                        <li>Pacientes</li>
+                        <li>Consultas</li>
+                        <li>Historial médico</li>
+                    </ul>
+                    <!-- Botón -->
+                    <a href="#" class="btn btn-primary btn-sm">Ver todos ></a>
                 </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Imagen de la consulta general" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1937f89346f%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1937f89346f%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2256.20000076293945%22%20y%3D%22131%22%3EConsulta%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 200px; height: 250px;">
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-success">Especialidades</strong>
-                    <h3 class="mb-0">
-                        <a class="text-dark" href="#">Pediatría</a>
-                    </h3>
-                    <div class="mb-1 text-muted">Ene 10, 2024</div>
-                    <p class="card-text mb-auto">Contamos con un equipo especializado en pediatría para el cuidado de los más pequeños.</p>
-                    <a href="#">Leer más</a>
+
+        <!-- Crear -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100 p-3">
+                <div class="card-body">
+                    <img src="https://i.pinimg.com/736x/f6/f6/f2/f6f6f2d8faed6ae3ea849b79f01ac932.jpg" alt="Crear" class="img-fluid mb-3" style="width: 60px;">
+                    <h5 class="card-title font-weight-bold">Crear</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li>Nueva consulta</li>
+                        <li>Registrar paciente</li>
+                        <li>Servicios adicionales</li>
+                    </ul>
+                    <a href="#" class="btn btn-success btn-sm">Ver todos ></a>
                 </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Imagen de pediatría" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1937f893472%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1937f893472%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2256.20000076293945%22%20y%3D%22131%22%3EPediatría%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 200px; height: 250px;">
+            </div>
+        </div>
+
+        <!-- Editar -->
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100 p-3">
+                <div class="card-body">
+                    <img src="https://i.pinimg.com/736x/c5/87/e0/c587e0eb0edc492265132579b6754a63.jpg" alt="Editar" class="img-fluid mb-3" style="width: 60px;">
+                    <h5 class="card-title font-weight-bold">Editar</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li>Actualizar datos</li>
+                        <li>Editar consultas</li>
+                        <li>Eliminar registros</li>
+                    </ul>
+                    <a href="#" class="btn btn-warning btn-sm">Ver todos ></a>
+                </div>
             </div>
         </div>
     </div>
-
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-8 blog-main">
-                <h3 class="pb-3 mb-4 font-italic border-bottom">
-                    Últimas Noticias
-                </h3>
-
-                <div class="blog-post">
-                    <h2 class="blog-post-title">Nuevo servicio de urgencias</h2>
-                    <p class="blog-post-meta">Enero 1, 2024 por <a href="#">Dr. Gómez</a></p>
-
-                    <p>Hemos habilitado un nuevo servicio de urgencias 24/7 para ofrecer atención inmediata en cualquier emergencia.</p>
-                    <hr>
-                    <p>Además de nuestras consultas regulares, nuestros profesionales están listos para atenderle en situaciones críticas. Estamos aquí para usted en todo momento.</p>
-                    <blockquote>
-                        <p>Recuerde que en situaciones de emergencia, lo más importante es mantener la calma y dirigirse rápidamente a nuestra clínica.</p>
-                    </blockquote>
-                    <p>Visítenos en cualquier momento, estamos para cuidar de su salud.</p>
-                </div><!-- /.blog-post -->
-
-                <div class="blog-post">
-                    <h2 class="blog-post-title">Nuestra campaña de vacunación 2024</h2>
-                    <p class="blog-post-meta">Diciembre 23, 2023 por <a href="#">Dra. López</a></p>
-
-                    <p>Este año lanzamos nuestra campaña de vacunación para niños y adultos. No deje pasar esta oportunidad para protegerse contra enfermedades comunes.</p>
-                    <p>Las vacunas estarán disponibles hasta finales de febrero. ¡Protéjase hoy!</p>
-                </div><!-- /.blog-post -->
-
-                <div class="blog-post">
-                    <h2 class="blog-post-title">Nuevo centro de maternidad</h2>
-                    <p class="blog-post-meta">Diciembre 14, 2023 por <a href="#">Dra. Martínez</a></p>
-
-                    <p>Nos complace anunciar la apertura de nuestro nuevo centro de maternidad, diseñado para ofrecer una experiencia cómoda y segura a futuras mamás y sus bebés.</p>
-                </div><!-- /.blog-post -->
-
-                <nav class="blog-pagination">
-                    <a class="btn btn-outline-primary" href="#">Más antiguos</a>
-                    <a class="btn btn-outline-secondary disabled" href="#">Más nuevos</a>
-                </nav>
-
-            </div><!-- /.blog-main -->
-
-            <aside class="col-md-4 blog-sidebar">
-                <div class="p-3 mb-3 bg-light rounded">
-                    <h4 class="font-italic">Sobre nosotros</h4>
-                    <p class="mb-0">En Clínica Salud y Bienestar, nos dedicamos a ofrecer atención médica de calidad para toda la familia. Contamos con un equipo de profesionales comprometidos con su salud.</p>
-                </div>
-
-                <div class="p-3">
-                    <h4 class="font-italic">Servicios destacados</h4>
-                    <ol class="list-unstyled mb-0">
-                        <li><a href="#">Consultas generales</a></li>
-                        <li><a href="#">Pediatría</a></li>
-                        <li><a href="#">Ginecología</a></li>
-                        <li><a href="#">Cardiología</a></li>
-                    </ol>
-                </div>
-            </aside><!-- /.blog-sidebar -->
-
-        </div><!-- /.row -->
-    </main><!-- /.container -->
-
-    <footer class="blog-footer">
-        <p>Clínica Salud y Bienestar © 2024</p>
-        <p>
-            <a href="#">Volver arriba</a>
-        </p>
-    </footer>
-
-    @endsection
-
-    </html>
+</div>
+@endsection
