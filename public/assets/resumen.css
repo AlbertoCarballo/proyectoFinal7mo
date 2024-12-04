@@ -1,0 +1,20 @@
+.container {
+    margin-top: 80px;
+}
+
+.summary-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.btn-save {
+    background-color: #253c55 !important;
+    color: white !important;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.btn-save:hover {
+    background-color: #93b9e2; /* Color al pasar el cursor */
+}
