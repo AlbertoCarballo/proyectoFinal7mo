@@ -54,7 +54,7 @@
                         <li>Historial médico</li>
                     </ul>
                     <!-- Botón -->
-                    <a href="vista-consultas" class="btn btn-primary btn-sm">Ver todos ></a>
+                    <a href="vista-consultas" class="btn btn-primary btn-sm">Ver todos</a>
                 </div>
             </div>
         </div>
@@ -92,4 +92,43 @@
         </div>
     </div>
 </div>
+
+<script>
+    const correo = localStorage.getItem('correo_electronico');
+
+    console.log('Correo encontrado en localStorage:', correo);
+
+
+    if (correo) {
+        fetch(`/api/ver-mi-doctor/${correo}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Datos del doctor recibidos:', data);
+                if (data) {
+
+                    localStorage.setItem('doctor_id', data.id_doctor);
+                    console.log('ID del doctor guardado en localStorage:', data.id);
+
+                    const nombreCompleto = `${data.nombre} ${data.primer_apellido}` + 
+                        (data.segundo_apellido ? ` ${data.segundo_apellido}` : '');
+
+
+                    localStorage.setItem('nombre_completo', nombreCompleto);
+
+                    localStorage.setItem('consultorio', data.consultorio);
+                } else {
+                    console.error('No se encontró el doctor.');
+                    alert('No se encontraron datos del doctor.');
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos del doctor:', error);
+                alert('No se pudieron cargar los datos del doctor.');
+            });
+    } else {
+        console.error('Correo no encontrado en localStorage');
+        alert('No se ha iniciado sesión correctamente. Por favor, inicie sesión.');
+        window.location.href = '/login';
+    }
+</script>
 @endsection
