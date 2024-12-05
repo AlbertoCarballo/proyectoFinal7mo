@@ -31,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td>12345</td>
                     <td>John Doe</td>
                     <td>2024-11-28 10:00 AM</td>
@@ -39,206 +39,12 @@
                     <td>Completado</td>
                     <td>Consultorio 3</td>
                     <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
+                        <a class="btn btn-info btn-sm" href="resumen" title="Agregar Resumen"><i class="fas fa-file-alt"></i></a>
+                        <a class="btn btn-warning btn-sm" href="editar-cita" title="Editar Cita"><i class="fas fa-pencil-alt"></i></a>
+                        <a class="btn btn-danger btn-sm" href="#" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></a>
                     </td>
-                </tr>
-                <tr>
-                    <td>12346</td>
-                    <td>Maria López</td>
-                    <td>2024-11-29 02:00 PM</td>
-                    <td>Chequeo general anual.</td>
-                    <td>Pendiente</td>
-                    <td>Consultorio 2</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12347</td>
-                    <td>José Martínez</td>
-                    <td>2024-12-01 08:30 AM</td>
-                    <td>Control de hipertensión.</td>
-                    <td>Completado</td>
-                    <td>Consultorio 5</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12348</td>
-                    <td>Ana García</td>
-                    <td>2024-12-02 10:00 AM</td>
-                    <td>Examen de colesterol y glucosa.</td>
-                    <td>Cancelado</td>
-                    <td>Consultorio 3</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12349</td>
-                    <td>Pedro Rodríguez</td>
-                    <td>2024-12-03 11:30 AM</td>
-                    <td>Chequeo para deporte.</td>
-                    <td>Pendiente</td>
-                    <td>Consultorio 4</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12350</td>
-                    <td>Lucía Fernández</td>
-                    <td>2024-12-04 09:00 AM</td>
-                    <td>Consulta de nutrición.</td>
-                    <td>Completado</td>
-                    <td>Consultorio 1</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12351</td>
-                    <td>Fernando Sánchez</td>
-                    <td>2024-12-05 03:00 PM</td>
-                    <td>Revisión de la vista.</td>
-                    <td>Pendiente</td>
-                    <td>Consultorio 6</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12352</td>
-                    <td>Carlos Peña</td>
-                    <td>2024-12-06 04:30 PM</td>
-                    <td>Consulta para dolor de espalda.</td>
-                    <td>Completado</td>
-                    <td>Consultorio 2</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12353</td>
-                    <td>Isabel Ruiz</td>
-                    <td>2024-12-07 09:30 AM</td>
-                    <td>Chequeo para embarazo.</td>
-                    <td>Pendiente</td>
-                    <td>Consultorio 7</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12354</td>
-                    <td>Héctor Jiménez</td>
-                    <td>2024-12-08 06:00 PM</td>
-                    <td>Consulta de alergias.</td>
-                    <td>Cancelado</td>
-                    <td>Consultorio 4</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12355</td>
-                    <td>Raúl Torres</td>
-                    <td>2024-12-09 01:00 PM</td>
-                    <td>Examen de salud general.</td>
-                    <td>Completado</td>
-                    <td>Consultorio 3</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12346</td>
-                    <td>Maria López</td>
-                    <td>2024-11-29 02:00 PM</td>
-                    <td>Chequeo general anual.</td>
-                    <td>Pendiente</td>
-                    <td>Consultorio 2</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12347</td>
-                    <td>José Martínez</td>
-                    <td>2024-12-01 08:30 AM</td>
-                    <td>Control de hipertensión.</td>
-                    <td>Completado</td>
-                    <td>Consultorio 5</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12348</td>
-                    <td>Ana García</td>
-                    <td>2024-12-02 10:00 AM</td>
-                    <td>Examen de colesterol y glucosa.</td>
-                    <td>Cancelado</td>
-                    <td>Consultorio 3</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12349</td>
-                    <td>Pedro Rodríguez</td>
-                    <td>2024-12-03 11:30 AM</td>
-                    <td>Chequeo para deporte.</td>
-                    <td>Pendiente</td>
-                    <td>Consultorio 4</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12350</td>
-                    <td>Lucía Fernández</td>
-                    <td>2024-12-04 09:00 AM</td>
-                    <td>Consulta de nutrición.</td>
-                    <td>Completado</td>
-                    <td>Consultorio 1</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="agregarResumen()" title="Agregar Resumen"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-warning btn-sm" onclick="editarCita()" title="Editar Cita"><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger btn-sm" onclick="eliminarCita()" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
+                </tr> -->
+                
             </tbody>
         </table>
     </div>
@@ -252,25 +58,95 @@
 
 <!-- Se tuvo que incluir porque eran muchos datos de la tabla -->
 <script>
-    $(document).ready(function() {
-        // Cambiar el color del texto en las celdas que contienen 'Pendiente', 'Cancelado' y 'Completado'
-        $("td").each(function() {
-            var cellText = $(this).text().trim();
+    document.addEventListener("DOMContentLoaded", function () {
+        const doctorId = localStorage.getItem('doctor_id');
 
-            switch (cellText) {
-                case "Pendiente":
-                    $(this).css("color", "orange");
-                    break;
-                case "Cancelado":
-                    $(this).css("color", "red");
-                    break;
-                case "Completado":
-                    $(this).css("color", "green");
-                    break;
-                default:
-                    break;
-            }
-        });
+        if (!doctorId) {
+            alert('No se encontró el ID del doctor. Redirigiendo al login...');
+            window.location.href = '/login';
+            return;
+        }
+
+        const apiUrl = `http://127.0.0.1:8000/api/ver-mis-citas/${doctorId}`;
+
+        // Petición a la API
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener las citas');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Datos de las citas:', data);
+
+                if (data.status !== 200 || !data.data || data.data.length === 0) {
+                    alert('No se encontraron citas médicas.');
+                    return;
+                }
+
+                const tableBody = document.querySelector("table tbody");
+
+
+                tableBody.innerHTML = '';
+
+
+                data.data.forEach(cita => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${cita.id_consultas}</td>
+                        <td>${cita.nombre_paciente}</td>
+                        <td>${cita.fecha_cita} ${cita.hora_consulta}</td>
+                        <td>${cita.descripcion_problema || 'Sin descripción'}</td>
+                        <td>${cita.estado}</td>
+                        <td>${cita.consultorio || 'N/A'}</td>
+                        <td>
+                            <a class="btn btn-info btn-sm" href="resumen/${cita.id_consultas}" title="Agregar Resumen">
+                                <i class="fas fa-file-alt"></i>
+                            </a>
+                            <a class="btn btn-warning btn-sm" href="editar-cita/${cita.id_consultas}" title="Editar Cita">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="#" onclick="eliminarCita(${cita.id_consultas})" title="Eliminar Cita">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    `;
+
+
+                    const statusCell = row.querySelector('td:nth-child(5)');
+                    if (statusCell) {
+                        switch (statusCell.textContent.trim().toLowerCase()) {
+                            case "espera":
+                                statusCell.style.color = "orange";
+                                break;
+                            case "cancelado":
+                                statusCell.style.color = "red";
+                                break;
+                            case "completado":
+                                statusCell.style.color = "green";
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener las citas:', error);
+                alert('No se pudieron cargar las citas médicas.');
+            });
     });
+
+    function eliminarCita(citaId) {
+        if (confirm('¿Estás seguro de eliminar esta cita?')) {
+            console.log(`Eliminando cita con ID: ${citaId}`);
+        }
+    }
 </script>
+
 @endsection
