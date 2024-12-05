@@ -47,19 +47,16 @@
 <!-- Script para cargar datos dinámicamente -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Obtener el ID del doctor desde el localStorage
         const doctorId = localStorage.getItem('doctor_id');
 
         if (!doctorId) {
             alert('No se encontró el ID del doctor. Redirigiendo al login...');
-            window.location.href = '/login'; // Redirigir al login si no hay ID
+            window.location.href = '/login'; 
             return;
         }
 
-        // URL de la API para obtener los datos del doctor
-        const apiUrl = `http://127.0.0.1:8000/api/ver-un-doctor/${doctorId}`;
+        const apiUrl = `/api/ver-un-doctor/${doctorId}`;
 
-        // Petición a la API
         fetch(apiUrl)
             .then(response => {
                 if (!response.ok) {
@@ -77,7 +74,6 @@
 
                 const doctor = data.data;
 
-                // Actualizar los campos dinámicos con los datos del doctor
                 document.getElementById('doctor-name').textContent = `Dr. ${doctor.nombre} ${doctor.primer_apellido} ${doctor.segundo_apellido || ''}`;
                 document.getElementById('doctor-specialty').textContent = doctor.id_especialidad || 'Especialidad no especificada';
                 document.getElementById('doctor-office').textContent = doctor.consultorio || 'Sin consultorio asignado';
