@@ -142,7 +142,7 @@ class citasController extends Controller
             'hora_consulta'=>"required", 
             'descripcion_problema'=>"required",
             'consultorio'=>"required", 
-            'estado'=>"required"
+            'estado'
         ]);
     
         if ($validator->fails()) {
@@ -163,8 +163,7 @@ class citasController extends Controller
                 'fecha_cita'=>$request->fecha_cita, 
                 'hora_consulta'=>$request->hora_consulta, 
                 'descripcion_problema'=>$request->descripcion_problema,
-                'consultorio'=>$request->consultorio, 
-                'estado'=>$request->estado
+                'consultorio'=>$request->consultorio
             ]);
     
             return response()->json([

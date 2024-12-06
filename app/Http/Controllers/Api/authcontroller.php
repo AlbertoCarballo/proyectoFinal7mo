@@ -56,6 +56,7 @@ class AuthController extends Controller
             $data = [
                 'message' => 'login exitoso',
                 "id_usuario" => $paciente->id_paciente,
+                "nombre_paciente" => $paciente->nombre . ' ' . $paciente->primer_apellido ,
                 'status' => 200
             ];
 
