@@ -36,6 +36,7 @@ Route::get('/especialidades', [EspecialidadesController::class, 'getEspecialidad
 //Rutas para citas
 Route::get('/ver-citas', [citasController::class, 'getCitas']);
 Route::get('/ver-mis-citas/{id}', [citasController::class, 'getMisCitas']);
+Route::get('/ver-mis-citas-paciente/{id}', [citasController::class, 'getMisCitasPaciente']);
 Route::get('/ver-una-cita/{id}', [citasController::class, 'getSpecificCita']);
 Route::post("/crear-cita",[citasController::class, 'postCitas']);
 Route::put("/actualizar-cita/{id}",[citasController::class, 'updateCita']);
