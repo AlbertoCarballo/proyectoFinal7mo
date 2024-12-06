@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\citasController;
 
 //Ruta Auth
 Route::post("/auth",[authController::class, 'login']);
+Route::post("/auth-movil",[authController::class, 'loginMovil']);
 
 //Rutas para Pacientes
 

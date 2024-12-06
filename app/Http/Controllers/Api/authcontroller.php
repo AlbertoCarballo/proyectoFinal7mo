@@ -31,6 +31,45 @@ class AuthController extends Controller
             return redirect('/')->with('error', 'Credenciales incorrectas');
         }
     }
+
+    public function loginMovil(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "correo_electronico" => "required|email",
+            "contrasena" => "required"
+        ]);
+
+        if ($validator->fails()) {
+            $data = [
+                'message' => 'datos incorrectos',
+                'status' => 400
+            ];
+
+            return response()->json($data, 400);
+        }
+
+        $paciente = Pacientes::where('correo_electronico', $request->correo_electronico)->first();
+        if ($paciente && $paciente->contrasena === $request->contrasena) {
+            Session::put('user_id', $paciente->id_paciente);
+            Session::put('tipo_usuario', 'doctor');
+            
+            $data = [
+                'message' => 'login exitoso',
+                "id_usuario" => $paciente->id_paciente,
+                'status' => 200
+            ];
+
+            return response()->json($data, 200);
+        }
+        else {
+            $data = [
+                'message' => 'login fallido',
+                'status' => 404
+            ];
+
+            return response()->json($data, 404);
+        }
+    }
     
 
 }
