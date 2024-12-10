@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\DoctoresController;
 use App\Http\Controllers\Api\EspecialidadesController;
 use App\Http\Controllers\Api\authController;
 use App\Http\Controllers\Api\citasController;
+use App\Http\Controllers\Api\ResumenController;
 
 //Ruta Auth
 Route::post("/auth",[authController::class, 'login']);
@@ -41,3 +42,10 @@ Route::get('/ver-una-cita/{id}', [citasController::class, 'getSpecificCita']);
 Route::post("/crear-cita",[citasController::class, 'postCitas']);
 Route::put("/actualizar-cita/{id}",[citasController::class, 'updateCita']);
 Route::delete("/borrar-cita/{id}",[citasController::class, 'deleteCita']);
+
+//Rutas para resumen consultas
+Route::get('/ver-resumen', [ResumenController::class, 'getResumen']);
+Route::get('/ver-un-resumen/{id}', [ResumenController::class, 'getSpecificResumen']);
+Route::post("/crear-resumen",[ResumenController::class, 'postResumen']);
+Route::put("/actualizar-resumen/{id}",[ResumenController::class, 'updateResumen']);
+Route::delete("/borrar-resumen/{id}",[ResumenController::class, 'deleteResumen']);
