@@ -46,6 +46,7 @@ Route::delete("/borrar-cita/{id}",[citasController::class, 'deleteCita']);
 //Rutas para resumen consultas
 Route::get('/ver-resumen', [ResumenController::class, 'getResumen']);
 Route::get('/ver-un-resumen/{id}', [ResumenController::class, 'getSpecificResumen']);
+Route::get('/ver-mis-resumenes/{id}', [ResumenController::class, 'getMisResumen']);
 Route::post("/crear-resumen",[ResumenController::class, 'postResumen']);
 Route::put("/actualizar-resumen/{id}",[ResumenController::class, 'updateResumen']);
 Route::delete("/borrar-resumen/{id}",[ResumenController::class, 'deleteResumen']);

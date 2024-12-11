@@ -60,6 +60,41 @@ class ResumenController extends Controller
         }
     }
 
+    public function getMisResumen($id){
+        try {
+            $citas = ResumenConsultas::where('id_doctor', $id)->get();
+        
+            // Verificar si se encontraron citas
+            if ($citas->isEmpty()) {
+                $data = [
+                    'message' => 'No se encontraron citas para este doctor',
+                    'status' => 404
+                ];
+        
+                return response()->json($data, 404);
+            }
+        
+            // Si se encontraron citas
+            $data = [
+                'message' => 'Citas encontradas',
+                'data' => $citas,
+                'status' => 200
+            ];
+        
+            return response()->json($data, 200);
+        
+        } catch (\Exception $e) {
+            // Captura excepciones y muestra detalles en el log
+            Log::error('Error al obtener las citas: ' . $e->getMessage());
+        
+            return response()->json([
+                'message' => 'Error al procesar la solicitud',
+                'status' => 500
+            ], 500);
+        }
+        
+    }
+
     public function postResumen(Request $request)
     {
 
