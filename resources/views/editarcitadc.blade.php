@@ -103,6 +103,20 @@
     </div>
 </div>
 
+<script> 
+    document.addEventListener("DOMContentLoaded", function () {
+    const inputPacienteNombre = document.getElementById("nombre");
+
+    inputPacienteNombre.addEventListener("input", function () {
+        const regex = /^[a-zA-Z\s]*$/;
+        if (!regex.test(this.value)) {
+            this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+        }
+    });
+});
+
+</script>
+
 <script>
    document.addEventListener("DOMContentLoaded", function () {
     // Obtener la parte final de la URL (el ID de la cita)
