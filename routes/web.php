@@ -18,7 +18,7 @@ Route::get('/mis-citas', function () {
     return view('miscitasdc');
 });
 
-Route::get('/editar-cita', function () {
+Route::get('/editar-cita/{id}', function () {
     return view('editarcitadc');
 });
 
@@ -30,6 +30,6 @@ Route::get('/vista-consultas', function () {
     return view('vista-consultas');
 });
 
-Route::get('/resumen', function () {
+Route::get('/resumen/{id}', function () {
     return view('resumen');
 });

@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container-fluid">
                 <!-- Logo -->
-                <a class="navbar-brand" href="home">
+                <a class="navbar-brand" href="/home">
                     Mi Clínica
                 </a>
 
@@ -38,20 +38,21 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <!-- Usuario (desplegable) -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-user-circle pe-2"></i> Usuario
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="perfil"><i class="fas fa-user pe-2"></i> Perfil</a></li>
+                                <li><a class="dropdown-item" href="/perfil"><i class="fas fa-user pe-2"></i> Perfil</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="mis-citas"><i class="fas fa-history pe-2"></i> Historial</a></li>
+                                <li><a class="dropdown-item" href="/mis-citas"><i class="fas fa-history pe-2"></i>Historial Citas</a></li>
+                                <li><a class="dropdown-item" href="/historial-resumen"><i class="fas fa-history pe-2"></i>Historial Resumen</a></li>
                             </ul>
                         </li>
                         <!-- Consultas -->
                         <li class="nav-item">
-                            <a class="nav-link" href="vista-consultas">
+                            <a class="nav-link" href="/vista-consultas">
                                 <i class="fas fa-briefcase-medical pe-2"></i> Consultas
                             </a>
                         </li>

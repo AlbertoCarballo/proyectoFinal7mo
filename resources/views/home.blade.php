@@ -86,7 +86,7 @@
                         <li>Editar consultas</li>
                         <li>Eliminar registros</li>
                     </ul>
-                    <a href="editar-cita" class="btn btn-warning btn-sm">Ver todos ></a>
+                    <a href="mis-citas" class="btn btn-warning btn-sm">Ver todos ></a>
                 </div>
             </div>
         </div>

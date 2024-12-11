@@ -15,82 +15,42 @@
                         <form id="appointmentForm" role="form">
                             <div class="controls">
 
-                                <!-- Fila de Nombre, Apellido y Segundo Apellido -->
+                                <!-- Fila de Nombre -->
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="nombre">Nombre *</label>
-                                            <input id="nombre" type="text" name="nombre" class="form-control" placeholder="Nombre *" required="required" value="Juan">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="apellido">Primer Apellido *</label>
-                                            <input id="apellido" type="text" name="apellido" class="form-control" placeholder="Primer Apellido *" required="required" value="Pérez">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="apellido2">Segundo Apellido</label>
-                                            <input id="apellido2" type="text" name="apellido2" class="form-control" placeholder="Segundo Apellido" value="González">
+                                            <input id="nombre" type="text" name="nombre" class="form-control" placeholder="Nombre *" required="required">
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Fila de Teléfono y Correo -->
+                                <!-- Fila de Fecha -->
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="telefono">Teléfono *</label>
-                                            <input id="telefono" type="text" name="telefono" class="form-control" placeholder="Teléfono *" required="required" value="123456789">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="correo">Correo *</label>
-                                            <input id="correo" type="email" name="correo" class="form-control" placeholder="Correo *" required="required" value="juan.perez@email.com">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Fila de Especialidad y Fecha -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="especialidad">Especialidad *</label>
-                                            <select id="especialidad" name="especialidad" class="form-control" required="required">
-                                                <option value="">Seleccionar especialidad</option>
-                                                <option value="cardiologia" selected>Cardiología</option>
-                                                <option value="dermatologia">Dermatología</option>
-                                                <option value="neurologia">Neurología</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fecha">Fecha *</label>
-                                            <input id="fecha" type="date" name="fecha" class="form-control" required="required" value="2024-12-01">
+                                            <input id="fecha" type="date" name="fecha" class="form-control" required="required">
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Fila de Horario y Doctor -->
+                                <!-- Fila de Horario -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="horario">Horario *</label>
-                                            <input id="horario" type="time" name="horario" class="form-control" required="required" value="10:00">
+                                            <input id="horario" type="time" name="horario" class="form-control" required="required">
                                         </div>
                                     </div>
+                                </div>
+
+                                <!-- Fila de Doctor -->
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="doctor">Doctor *</label>
-                                            <select id="doctor" name="doctor" class="form-control" required="required">
-                                                <option value="">Seleccionar doctor</option>
-                                                <option value="dr_juan_perez" selected>Dr. Juan Pérez</option>
-                                                <option value="dr_maria_lopez">Dra. María López</option>
-                                                <option value="dr_carlos_gomez">Dr. Carlos Gómez</option>
-                                            </select>
+                                            <label id="doctorLabel" class="form-control"></label> <!-- Aquí se mostrará el nombre del doctor -->
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +60,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="descripcion">Breve Descripción</label>
-                                            <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Especifique sus sintomas." rows="4">Dolor en el pecho recurrente.</textarea>
+                                            <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Especifique sus sintomas." rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -110,48 +70,22 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="consultorio">Consultorio *</label>
-                                            <select id="consultorio" name="consultorio" class="form-control" required="required">
-                                                <option value="">Seleccionar consultorio</option>
-                                                <option value="consultorio_1" selected>Consultorio 1</option>
-                                                <option value="consultorio_2">Consultorio 2</option>
-                                                <option value="consultorio_3">Consultorio 3</option>
-                                            </select>
+                                            <label id="consultorioLabel" class="form-control"></label> <!-- Aquí se mostrará el número del consultorio -->
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Fila de Estado y Prioridad -->
+                                <!-- Fila de Estado -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="estado">Estado *</label>
                                             <select id="estado" name="estado" class="form-control" required="required">
                                                 <option value="">Seleccionar estado</option>
-                                                <option value="pendiente" selected>Pendiente</option>
+                                                <option value="pendiente">Pendiente</option>
                                                 <option value="confirmada">Confirmada</option>
                                                 <option value="cancelada">Cancelada</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="prioridad">Prioridad *</label>
-                                            <select id="prioridad" name="prioridad" class="form-control" required="required">
-                                                <option value="">Seleccionar prioridad</option>
-                                                <option value="alta" selected>Alta</option>
-                                                <option value="media">Media</option>
-                                                <option value="baja">Baja</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Fila de Observaciones -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="observaciones">Observaciones</label>
-                                            <textarea id="observaciones" name="observaciones" class="form-control" placeholder="Observaciones adicionales." rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -169,27 +103,82 @@
     </div>
 </div>
 
-<!-- Agregar esto al botón -->
-<div class="result-container" id="resultContainer" style="display:none;">
-    <h4 class="text-center">Cita Generada</h4>
-    <table class="w-100 result-table">
-        <tr>
-            <th>Id de Cita</th>
-            <th>Nombre</th>
-            <th>Fecha y Hora</th>
-            <th>Doctor</th>
-            <th>Especialidad</th>
-            <th>Número de Consultorio</th>
-        </tr>
-        <tr>
-            <td id="resultId">CIT001</td>
-            <td id="resultNombre">Juan Pérez</td>
-            <td id="resultFechaHora">2024-12-01, 10:00 AM</td>
-            <td id="resultDoctor">Dr. Juan Pérez</td>
-            <td id="resultEspecialidad">Cardiología</td>
-            <td id="resultConsultorio">Consultorio 3</td>
-        </tr>
-    </table>
-</div>
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    // Obtener la parte final de la URL (el ID de la cita)
+    let url = window.location.pathname;
+    let citaId = url.substring(url.lastIndexOf('/') + 1);
+
+    // Hacer una solicitud GET utilizando el ID para obtener los datos actuales de la cita
+    let apiUrl = `/api/ver-una-cita/${citaId}`;
+    
+    // Realizar la solicitud GET
+    fetch(apiUrl)
+        .then(response => response.json())  // Convertir la respuesta a JSON
+        .then(data => {
+            // Aquí puedes trabajar con los datos recibidos
+            console.log("Datos de la cita:", data.data);
+
+            // Asignar los valores recibidos a los campos del formulario
+            document.getElementById('nombre').value = data.data.nombre_paciente;
+            document.getElementById('fecha').value = data.data.fecha_cita || ''; // Asegurarse que sea una fecha válida
+            document.getElementById('horario').value = data.data.hora_consulta || ''; // Asegurarse que sea una hora válida
+            document.getElementById('doctorLabel').textContent = data.data.nombre_doctor || 'No asignado'; // Mostrar el nombre del doctor
+            document.getElementById('descripcion').value = data.data.descripcion_problema || '';
+            document.getElementById('consultorioLabel').textContent = data.data.consultorio || 'No asignado'; // Mostrar el consultorio
+            document.getElementById('estado').value = data.data.estado; // Mostrar el estado
+
+            // Almacenar el id_paciente y id_doctor de los datos recibidos para la actualización
+            const idPaciente = data.data.id_paciente;
+            const idDoctor = data.data.id_doctor;
+
+            // Manejar el envío del formulario
+            document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+                e.preventDefault();  // Prevenir el comportamiento por defecto del formulario
+
+                // Recoger los datos del formulario, ahora usando los id_paciente y id_doctor de la respuesta GET
+                const data = {
+                    id_paciente: idPaciente,  // Ahora se usa el id_paciente de la respuesta
+                    nombre_paciente: document.getElementById('nombre').value,
+                    id_doctor: idDoctor,  // Ahora se usa el id_doctor de la respuesta
+                    nombre_doctor: document.getElementById('doctorLabel').textContent,
+                    fecha_cita: document.getElementById('fecha').value,
+                    hora_consulta: document.getElementById('horario').value,
+                    descripcion_problema: document.getElementById('descripcion').value,
+                    consultorio: document.getElementById('consultorioLabel').textContent,
+                    estado: document.getElementById('estado').value,
+                };
+
+                // Realizar la solicitud PUT
+                fetch(`/api/actualizar-cita/${citaId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json', // Especificamos que estamos enviando JSON
+                    },
+                    body: JSON.stringify(data), // Convertimos los datos en formato JSON
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Aquí puedes mostrar un mensaje de éxito o redirigir
+                    if (data.status === 200) {
+                        alert('Cita actualizada correctamente');
+                        console.log(data);  // Puedes usarlo para mostrar el resultado
+                    } else {
+                        alert('Error al actualizar la cita: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al actualizar la cita:', error);
+                    alert('Hubo un error al actualizar la cita');
+                });
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos de la cita:', error);
+        });
+});
+
+
+</script>
 
 @endsection

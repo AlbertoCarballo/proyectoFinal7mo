@@ -87,9 +87,7 @@
 
                 const tableBody = document.querySelector("table tbody");
 
-
                 tableBody.innerHTML = '';
-
 
                 data.data.forEach(cita => {
                     const row = document.createElement('tr');
@@ -114,7 +112,6 @@
                         </td>
                     `;
 
-
                     const statusCell = row.querySelector('td:nth-child(5)');
                     if (statusCell) {
                         switch (statusCell.textContent.trim().toLowerCase()) {
@@ -132,7 +129,6 @@
                         }
                     }
 
-
                     tableBody.appendChild(row);
                 });
             })
@@ -144,7 +140,32 @@
 
     function eliminarCita(citaId) {
         if (confirm('¿Estás seguro de eliminar esta cita?')) {
-            console.log(`Eliminando cita con ID: ${citaId}`);
+            const apiUrl = `/api/borrar-cita/${citaId}`;
+
+            fetch(apiUrl, {
+                method: 'DELETE', // Utilizamos el método DELETE
+                headers: {
+                    'Content-Type': 'application/json', // Especificamos que estamos enviando JSON
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al eliminar la cita');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 200) {
+                    alert('Cita eliminada correctamente');
+                    location.reload(); // Recarga la página para actualizar la tabla
+                } else {
+                    alert('Error al eliminar la cita: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error al eliminar la cita:', error);
+                alert('Hubo un error al eliminar la cita');
+            });
         }
     }
 </script>

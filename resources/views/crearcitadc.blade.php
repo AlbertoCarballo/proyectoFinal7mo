@@ -16,24 +16,15 @@
                         <form id="appointmentForm" role="form">
                             <div class="controls">
 
-                                <!-- Fila de Nombre, Apellido y Segundo Apellido -->
+                                <!-- Fila de Paciente (Cargado dinámicamente) -->
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="nombre">Nombre *</label>
-                                            <input id="nombre" type="text" name="nombre" class="form-control" placeholder="Nombre *" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="apellido">Primer Apellido *</label>
-                                            <input id="apellido" type="text" name="apellido" class="form-control" placeholder="Primer Apellido *" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="apellido2">Segundo Apellido</label>
-                                            <input id="apellido2" type="text" name="apellido2" class="form-control" placeholder="Segundo Apellido">
+                                            <label for="paciente">Paciente *</label>
+                                            <select id="paciente" name="id_paciente" class="form-control" required="required">
+                                                <option value="">Seleccionar paciente</option>
+                                                <!-- Opciones cargadas dinámicamente desde JS -->
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -43,14 +34,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fecha">Fecha *</label>
-                                            <input id="fecha" type="date" name="fecha" class="form-control" required="required">
+                                            <input id="fecha" type="date" name="fecha_cita" class="form-control" required="required" value="{{ date('Y-m-d') }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="horario">Horario *</label>
-                                            <input id="horario" type="time" name="horario" class="form-control" required="required">
+                                            <input id="horario" type="time" name="hora_consulta" class="form-control" required="required">
                                         </div>
                                     </div>
                                 </div>
@@ -60,25 +51,18 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="descripcion">Breve Descripción</label>
-                                            <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Especifique sus sintomas." rows="4"></textarea>
+                                            <textarea id="descripcion" name="descripcion_problema" class="form-control" placeholder="Especifique sus síntomas." rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
 
-
-
-                                <!-- CONSULTORIO CAMBIAR AL TEXT -->
                                 <!-- Fila de Consultorio -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="consultorio">Consultorio *</label>
-                                            <select id="consultorio" name="consultorio" class="form-control" required="required">
-                                                <option value="">Seleccionar consultorio</option>
-                                                <option value="consultorio_1">Consultorio 1</option>
-                                                <option value="consultorio_2">Consultorio 2</option>
-                                                <option value="consultorio_3">Consultorio 3</option>
-                                            </select>
+                                            <!-- Ahora es un label con el valor del localStorage -->
+                                            <label id="consultorioLabel" class="form-control"></label>
                                         </div>
                                     </div>
 
@@ -134,37 +118,79 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- Script para obtener los pacientes y manejar el envío del formulario -->
 <script>
+    // Cargar pacientes desde la API al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('/api/ver-pacientes')
+            .then(response => response.json())
+            .then(data => {
+                const pacienteSelect = document.getElementById('paciente');
+                
+                data.data.forEach(paciente => {  // Asegúrate de acceder a "data.data" según la estructura de tu respuesta
+                    const option = document.createElement('option');
+                    option.value = paciente.id_paciente;  // Aquí "id_paciente" es el identificador correcto
+                    option.textContent = `${paciente.nombre} ${paciente.primer_apellido} ${paciente.segundo_apellido}`;
+                    pacienteSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar los pacientes:', error);
+            });
+
+        // Establecer el valor del consultorio desde el localStorage
+        const consultorio = localStorage.getItem('consultorio');
+        if (consultorio) {
+            document.getElementById('consultorioLabel').textContent = consultorio;
+        }
+    });
+
+    // Manejo del formulario para generar la cita
     document.getElementById('appointmentForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Obtener datos del formulario
-        var nombre = document.getElementById('nombre').value;
-        var apellido = document.getElementById('apellido').value;
-        var apellido2 = document.getElementById('apellido2').value;
-        var telefono = document.getElementById('telefono').value;
-        var correo = document.getElementById('correo').value;
-        var especialidad = document.getElementById('especialidad').value;
-        var fecha = document.getElementById('fecha').value;
-        var horario = document.getElementById('horario').value;
-        var doctor = document.getElementById('doctor').value;
+        var formData = new FormData(document.getElementById('appointmentForm'));
 
-        // Generar un id aleatorio para la cita
-        var citaId = 'CIT' + Math.floor(Math.random() * 1000);
+        // Obtener los datos del doctor y consultorio desde el localStorage
+        const idDoctor = localStorage.getItem('doctor_id');
+        const nombreDoctor = localStorage.getItem('nombre_completo');
+        const consultorio = localStorage.getItem('consultorio');
 
-        // Asignar los datos a la tabla de resultados
-        document.getElementById('resultId').textContent = citaId;
-        document.getElementById('resultNombre').textContent = nombre + ' ' + apellido + ' ' + apellido2;
-        document.getElementById('resultFechaHora').textContent = fecha + ' ' + horario;
-        document.getElementById('resultDoctor').textContent = doctor;
-        document.getElementById('resultEspecialidad').textContent = especialidad;
-        document.getElementById('resultConsultorio').textContent = 'Consultorio ' + (Math.floor(Math.random() * 10) + 1);
+        // Obtener el valor del paciente seleccionado
+        const pacienteSelect = document.getElementById('paciente');
+        const idPaciente = pacienteSelect.value;  // Obtener el id del paciente seleccionado
+        const nombrePaciente = pacienteSelect.options[pacienteSelect.selectedIndex].text;  // Obtener el nombre completo del paciente
 
-        // Mostrar el resultado y ocultar el formulario
-        document.getElementById('resultContainer').style.display = 'block';
-        document.getElementById('appointmentForm').reset();
+        // Verificar que los valores del doctor, consultorio, paciente y nombre del paciente existen
+        if (idDoctor && nombreDoctor && consultorio && idPaciente && nombrePaciente) {
+            formData.append('id_doctor', idDoctor);
+            formData.append('nombre_doctor', nombreDoctor);
+            formData.append('consultorio', consultorio);
+            formData.append('id_paciente', idPaciente);  // Agregar el id del paciente
+            formData.append('nombre_paciente', nombrePaciente);  // Agregar el nombre completo del paciente
+        } else {
+            alert('No se encontraron datos del doctor, consultorio o paciente.');
+            return;
+        }
+
+        fetch('/api/crear-cita', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 200) {
+                window.location.href = '/mis-citas';
+
+            } else {
+                console.error('Errores de validación:', data.error);
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error en el servidor.');
+        });
     });
 </script>
-
-
-@endsection
+<!-- @endsection -->
