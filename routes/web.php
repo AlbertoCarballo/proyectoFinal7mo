@@ -33,3 +33,11 @@ Route::get('/vista-consultas', function () {
 Route::get('/resumen/{id}', function () {
     return view('resumen');
 });
+
+Route::get('/historial-resumen', function () {
+    return view('resumen-historial');
+});
+
+Route::get('/editar-resumen/{id}', function () {
+    return view('editar-resumen');
+});
