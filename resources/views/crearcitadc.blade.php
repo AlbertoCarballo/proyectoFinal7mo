@@ -51,7 +51,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="descripcion">Breve Descripción</label>
-                                            <textarea id="descripcion" name="descripcion_problema" class="form-control" placeholder="Especifique sus síntomas." rows="4"></textarea>
+                                            <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Especifique sus síntomas." rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -115,9 +115,20 @@
     </table>
 </div>
 
+<script> 
+    document.addEventListener("DOMContentLoaded", function () {
+    const inputDescripcion = document.getElementById("descripcion");
+
+    inputDescripcion.addEventListener("input", function () {
+        const regex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]*$/;
+        if (!regex.test(this.value)) {
+            this.value = this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"]/g, '').slice(0, 280);
+        }
+    });
+});
+</script>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
 <!-- Script para obtener los pacientes y manejar el envío del formulario -->
 <script>
     // Cargar pacientes desde la API al cargar la página

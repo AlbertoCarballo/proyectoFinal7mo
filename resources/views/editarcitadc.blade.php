@@ -108,13 +108,20 @@
     const inputPacienteNombre = document.getElementById("nombre");
 
     inputPacienteNombre.addEventListener("input", function () {
-        const regex = /^[a-zA-Z\s]*$/;
+        const regex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]*$/;
         if (!regex.test(this.value)) {
-            this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+            this.value = this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]/g, '');
+        }
+    });
+    const inputDescripcion = document.getElementById("descripcion");
+
+    inputDescripcion.addEventListener("input", function () {
+        const regex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]*$/;
+        if (!regex.test(this.value)) {
+            this.value = this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"]/g, '').slice(0, 280);
         }
     });
 });
-
 </script>
 
 <script>
