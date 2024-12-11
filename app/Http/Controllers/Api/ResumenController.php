@@ -30,7 +30,7 @@ class ResumenController extends Controller
 
     public function getSpecificResumen($id){
         try {
-        $doctor = ResumenConsultas::find($id);
+        $resumen = ResumenConsultas::find($id);
 
         if (!$resumen) {
             $data = [
