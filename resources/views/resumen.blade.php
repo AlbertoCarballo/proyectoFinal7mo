@@ -37,7 +37,18 @@
     <!-- Botón de guardar -->
     <button type="button" class="btn btn-save" id="guardarResumen">Guardar</button>
 </div>
+<script> 
+    document.addEventListener("DOMContentLoaded", function () {
+    const inputDescripcion = document.getElementById("resumenClinico");
 
+    inputDescripcion.addEventListener("input", function () {
+        const regex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]*$/;
+        if (!regex.test(this.value)) {
+            this.value = this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"]/g, '').slice(0, 280);
+        }
+    });
+});
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         let url = window.location.pathname;
