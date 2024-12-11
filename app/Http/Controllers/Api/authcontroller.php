@@ -18,17 +18,30 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/')->withErrors($validator)->withInput();
+            $data = [
+                'message' => 'login fallido',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+
         }
 
         $doctor = Doctores::where('correo_electronico', $request->correo_electronico)->first();
+
         if ($doctor && $doctor->contrasena === $request->contrasena) {
-            Session::put('user_id', $doctor->id_doctor);
-            Session::put('tipo_usuario', 'doctor');
-            return redirect('/home');
+            $data = [
+                'message' => 'login exitoso',
+                'status' => 200
+            ];
+            return response()->json($data, 200);
         }
         else {
-            return redirect('/')->with('error', 'Credenciales incorrectas');
+            $data = [
+                'message' => 'login fallido',
+                'status' => 404
+            ];
+            
+            return response()->json($data, 404);
         }
     }
 
