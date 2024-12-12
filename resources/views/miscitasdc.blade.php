@@ -60,11 +60,21 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const doctorId = localStorage.getItem('doctor_id');
-
         if (!doctorId) {
-            alert('No se encontró el ID del doctor. Redirigiendo al login...');
-            window.location.href = '/';
-            return;
+            Swal.fire({
+                        confirmButtonText: 'Aceptar',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        },
+                        buttonsStyling: false,
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: 'No ha iniciado sesion. Por favor, inicie sesion para acceder a esta pagina.',
+                        confirmButtonText: 'Aceptar',
+                    }).then(() => {
+                        window.location.href = '/';
+                        return;
+                    }) ;      
         }
 
         const apiUrl = `http://127.0.0.1:8000/api/ver-mis-citas/${doctorId}`;
