@@ -29,6 +29,7 @@ class AuthController extends Controller
         $doctor = Doctores::where('correo_electronico', $request->correo_electronico)->first();
 
         if ($doctor && $doctor->contrasena === $request->contrasena) {
+
             $data = [
                 'message' => 'login exitoso',
                 'status' => 200
