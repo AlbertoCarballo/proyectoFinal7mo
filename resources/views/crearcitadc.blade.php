@@ -131,7 +131,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Script para obtener los pacientes y manejar el envío del formulario -->
 <script>
-    // Cargar pacientes desde la API al cargar la página
     document.addEventListener('DOMContentLoaded', function() {
         const doctorId = localStorage.getItem('doctor_id');
         if (!doctorId) {
@@ -155,9 +154,9 @@
             .then(data => {
                 const pacienteSelect = document.getElementById('paciente');
                 
-                data.data.forEach(paciente => {  // Asegúrate de acceder a "data.data" según la estructura de tu respuesta
+                data.data.forEach(paciente => { 
                     const option = document.createElement('option');
-                    option.value = paciente.id_paciente;  // Aquí "id_paciente" es el identificador correcto
+                    option.value = paciente.id_paciente; 
                     option.textContent = `${paciente.nombre} ${paciente.primer_apellido} ${paciente.segundo_apellido}`;
                     pacienteSelect.appendChild(option);
                 });
@@ -173,14 +172,11 @@
         }
     });
 
-    // Manejo del formulario para generar la cita
-// Manejo del formulario para generar la cita
 document.getElementById('appointmentForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // Validación del campo descripción
     const descripcion = document.getElementById('descripcion').value.trim();
-    const descripcionRegex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"]{0,280}$/; // Restricción: solo letras, espacios, puntos, comas y hasta 280 caracteres.
+    const descripcionRegex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"]{0,280}$/;
 
     if (!descripcionRegex.test(descripcion)) {
         alert('La descripción contiene caracteres no permitidos o supera los 280 caracteres.');
@@ -189,28 +185,28 @@ document.getElementById('appointmentForm').addEventListener('submit', function(e
 
     var formData = new FormData(document.getElementById('appointmentForm'));
 
-    // Obtener los datos del doctor y consultorio desde el localStorage
     const idDoctor = localStorage.getItem('doctor_id');
     const nombreDoctor = localStorage.getItem('nombre_completo');
     const consultorio = localStorage.getItem('consultorio');
 
-    // Obtener el valor del paciente seleccionado
     const pacienteSelect = document.getElementById('paciente');
-    const idPaciente = pacienteSelect.value;  // Obtener el id del paciente seleccionado
-    const nombrePaciente = pacienteSelect.options[pacienteSelect.selectedIndex].text;  // Obtener el nombre completo del paciente
+    const idPaciente = pacienteSelect.value;
+    const nombrePaciente = pacienteSelect.options[pacienteSelect.selectedIndex].text;  
 
-    // Verificar que los valores del doctor, consultorio, paciente y nombre del paciente existen
+
     if (idDoctor && nombreDoctor && consultorio && idPaciente && nombrePaciente) {
-        formData.append('id_doctor', idDoctor);
-        formData.append('nombre_doctor', nombreDoctor);
-        formData.append('consultorio', consultorio);
-        formData.append('id_paciente', idPaciente);  // Agregar el id del paciente
-        formData.append('nombre_paciente', nombrePaciente);  // Agregar el nombre completo del paciente
+        formData.set('id_paciente', idPaciente);  
+        formData.set('nombre_paciente', nombrePaciente);  
+        formData.set('id_doctor', idDoctor);  
+        formData.set('nombre_doctor', nombreDoctor);
+        formData.set('consultorio', consultorio);  
+        formData.set('descripcion_problema', descripcion);  
     } else {
         alert('No se encontraron datos del doctor, consultorio o paciente.');
         return;
     }
 
+    // Enviar el formulario al backend
     fetch('/api/crear-cita', {
         method: 'POST',
         body: formData
