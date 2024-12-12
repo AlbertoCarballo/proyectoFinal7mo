@@ -133,9 +133,9 @@
     const inputDescripcion = document.getElementById("descripcion");
 
     inputDescripcion.addEventListener("input", function () {
-        const regex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]*$/;
+        const regex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"0-9]*$/;
         if (!regex.test(this.value)) {
-            this.value = this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"]/g, '').slice(0, 280);
+            this.value = this.value.replace(/[^a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"0-9]/g, '').slice(0, 280);
         }
     });
 });

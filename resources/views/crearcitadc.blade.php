@@ -176,7 +176,7 @@ document.getElementById('appointmentForm').addEventListener('submit', function(e
     e.preventDefault();
 
     const descripcion = document.getElementById('descripcion').value.trim();
-    const descripcionRegex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"]{0,280}$/;
+    const descripcionRegex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,0-9"]{0,280}$/;
 
     if (!descripcionRegex.test(descripcion)) {
         alert('La descripción contiene caracteres no permitidos o supera los 280 caracteres.');
