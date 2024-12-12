@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PacientesController;
 use App\Http\Controllers\Api\DoctoresController;
 use App\Http\Controllers\Api\EspecialidadesController;
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\authcontroller;
 use App\Http\Controllers\Api\citasController;
 use App\Http\Controllers\Api\ResumenController;
 
 //Ruta Auth
-Route::post("/auth",[AuthController::class, 'login']);
+Route::post("/auth",[authcontroller::class, 'login']);
 Route::post("/auth-movil",[authController::class, 'loginMovil']);
 
 //Rutas para Pacientes
