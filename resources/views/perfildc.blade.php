@@ -51,7 +51,7 @@
 
         if (!doctorId) {
             alert('No se encontró el ID del doctor. Redirigiendo al login...');
-            window.location.href = '/login'; 
+            window.location.href = '/'; 
             return;
         }
 

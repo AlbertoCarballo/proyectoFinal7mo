@@ -97,8 +97,7 @@
     const correo = localStorage.getItem('correo_electronico');
 
     console.log('Correo encontrado en localStorage:', correo);
-
-
+    
     if (correo) {
         fetch(`/api/ver-mi-doctor/${correo}`)
             .then(response => response.json())
@@ -128,7 +127,7 @@
     } else {
         console.error('Correo no encontrado en localStorage');
         alert('No se ha iniciado sesión correctamente. Por favor, inicie sesión.');
-        window.location.href = '/login';
+        window.location.href = '/';
     }
 </script>
 @endsection

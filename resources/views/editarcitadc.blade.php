@@ -106,6 +106,13 @@
 <script> 
     document.addEventListener("DOMContentLoaded", function () {
     const inputPacienteNombre = document.getElementById("nombre");
+    const doctorId = localStorage.getItem('doctor_id');
+
+        if (!doctorId) {
+            alert('No se encontró el ID del doctor. Redirigiendo al login...');
+            window.location.href = '/';
+            return;
+        }
 
     inputPacienteNombre.addEventListener("input", function () {
         const regex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s]*$/;

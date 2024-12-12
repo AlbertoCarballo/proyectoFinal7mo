@@ -60,10 +60,11 @@
 
                     <!-- Botón Cerrar sesión -->
                     <div class="d-flex">
-                        <a class="btn btn-sm btn-outline-danger" href="/">
+                        <button id="logoutButton" class="btn btn-sm btn-outline-danger">
                             <i class="fas fa-sign-out-alt pe-2"></i> Cerrar sesión
-                        </a>
+                        </button>
                     </div>
+
                 </div>
             </div>
         </nav>
@@ -75,6 +76,18 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.getElementById('logoutButton').addEventListener('click', function () {
+        // Revisa si hay datos en localStorage
+        if (localStorage.length > 0) {
+            // Limpia el localStorage
+            localStorage.clear();
+        }
+        // Redirige a la página de login
+        window.location.href = '/';
+    });
+</script>
+
 </body>
 
 </html>
