@@ -115,6 +115,7 @@
         .then(data => {
             alert('Datos actualizados exitosamente.');
             console.log('Respuesta del servidor:', data);
+            window.location.href = '/historial-resumen';
         })
         .catch(error => {
             console.error('Error al actualizar los datos:', error);

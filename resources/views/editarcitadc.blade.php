@@ -201,6 +201,7 @@
                     if (data.status === 200) {
                         alert('Cita actualizada correctamente');
                         console.log(data);  // Puedes usarlo para mostrar el resultado
+                        window.location.href = '/mis-citas';
                     } else {
                         alert('Error al actualizar la cita: ' + data.message);
                     }

@@ -125,6 +125,7 @@
             .then(data => {
                 alert('Datos guardados exitosamente.');
                 console.log('Respuesta del servidor:', data);
+                window.location.href = '/historial-resumen';
             })
             .catch(error => {
                 console.error('Error al guardar los datos:', error);
