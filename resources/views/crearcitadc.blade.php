@@ -1,6 +1,6 @@
 @extends('navbar')
 
-<link rel="stylesheet" href="{{ asset('/assets/style.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('/assets/style.css') }}">
 
 @section('content')
 <div class="container">

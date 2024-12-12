@@ -1,5 +1,5 @@
 @extends ('navbar')
-<link rel="stylesheet" href="{{ asset('/assets/resumen.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('/assets/resumen.css') }}">
 @section('content')
 <div class="container">
     <h1 class="text-center">Resumen Clínico</h1>

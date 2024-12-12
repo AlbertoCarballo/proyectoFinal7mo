@@ -1,5 +1,5 @@
 @extends('navbar')
-<link rel="stylesheet" href="{{ asset('/assets/identificacion.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('/assets/identificacion.css') }}">
 @section('content')
 <div class="container mt-5">
     <!-- Identificación del Doctor -->

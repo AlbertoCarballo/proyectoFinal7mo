@@ -1,5 +1,5 @@
 @extends('navbar')
-<link rel="stylesheet" href="{{ asset('/assets/homestyle.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('/assets/homestyle.css') }}">
 @section('content')
 <div class="container">
     <!-- Carrusel -->
