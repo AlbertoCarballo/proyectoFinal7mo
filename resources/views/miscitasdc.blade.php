@@ -77,7 +77,7 @@
                     }) ;      
         }
 
-        const apiUrl = `http://127.0.0.1:8000/api/ver-mis-citas/${doctorId}`;
+        const apiUrl = `/api/ver-mis-citas/${doctorId}`;
 
         // Petición a la API
         fetch(apiUrl)

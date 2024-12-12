@@ -49,7 +49,7 @@
             const contrasena = document.getElementById('floatingPassword').value;
 
             try {
-                const response = await fetch('https://proyectofinal7mo.railway.internal/api/auth', {
+                const response = await fetch('/api/auth', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -174,51 +174,61 @@
     });
 
     // Manejo del formulario para generar la cita
-    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+// Manejo del formulario para generar la cita
+document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-        var formData = new FormData(document.getElementById('appointmentForm'));
+    // Validación del campo descripción
+    const descripcion = document.getElementById('descripcion').value.trim();
+    const descripcionRegex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑ\s.,"]{0,280}$/; // Restricción: solo letras, espacios, puntos, comas y hasta 280 caracteres.
 
-        // Obtener los datos del doctor y consultorio desde el localStorage
-        const idDoctor = localStorage.getItem('doctor_id');
-        const nombreDoctor = localStorage.getItem('nombre_completo');
-        const consultorio = localStorage.getItem('consultorio');
+    if (!descripcionRegex.test(descripcion)) {
+        alert('La descripción contiene caracteres no permitidos o supera los 280 caracteres.');
+        return;
+    }
 
-        // Obtener el valor del paciente seleccionado
-        const pacienteSelect = document.getElementById('paciente');
-        const idPaciente = pacienteSelect.value;  // Obtener el id del paciente seleccionado
-        const nombrePaciente = pacienteSelect.options[pacienteSelect.selectedIndex].text;  // Obtener el nombre completo del paciente
+    var formData = new FormData(document.getElementById('appointmentForm'));
 
-        // Verificar que los valores del doctor, consultorio, paciente y nombre del paciente existen
-        if (idDoctor && nombreDoctor && consultorio && idPaciente && nombrePaciente) {
-            formData.append('id_doctor', idDoctor);
-            formData.append('nombre_doctor', nombreDoctor);
-            formData.append('consultorio', consultorio);
-            formData.append('id_paciente', idPaciente);  // Agregar el id del paciente
-            formData.append('nombre_paciente', nombrePaciente);  // Agregar el nombre completo del paciente
+    // Obtener los datos del doctor y consultorio desde el localStorage
+    const idDoctor = localStorage.getItem('doctor_id');
+    const nombreDoctor = localStorage.getItem('nombre_completo');
+    const consultorio = localStorage.getItem('consultorio');
+
+    // Obtener el valor del paciente seleccionado
+    const pacienteSelect = document.getElementById('paciente');
+    const idPaciente = pacienteSelect.value;  // Obtener el id del paciente seleccionado
+    const nombrePaciente = pacienteSelect.options[pacienteSelect.selectedIndex].text;  // Obtener el nombre completo del paciente
+
+    // Verificar que los valores del doctor, consultorio, paciente y nombre del paciente existen
+    if (idDoctor && nombreDoctor && consultorio && idPaciente && nombrePaciente) {
+        formData.append('id_doctor', idDoctor);
+        formData.append('nombre_doctor', nombreDoctor);
+        formData.append('consultorio', consultorio);
+        formData.append('id_paciente', idPaciente);  // Agregar el id del paciente
+        formData.append('nombre_paciente', nombrePaciente);  // Agregar el nombre completo del paciente
+    } else {
+        alert('No se encontraron datos del doctor, consultorio o paciente.');
+        return;
+    }
+
+    fetch('/api/crear-cita', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 200) {
+            window.location.href = '/mis-citas';
         } else {
-            alert('No se encontraron datos del doctor, consultorio o paciente.');
-            return;
+            console.error('Errores de validación:', data.error);
+            alert('Error: ' + data.message);
         }
-
-        fetch('/api/crear-cita', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 200) {
-                window.location.href = '/mis-citas';
-
-            } else {
-                console.error('Errores de validación:', data.error);
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error en el servidor.');
-        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error en el servidor.');
     });
+});
+
 </script>
 <!-- @endsection -->
