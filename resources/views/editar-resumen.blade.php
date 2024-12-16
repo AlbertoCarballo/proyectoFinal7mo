@@ -1,10 +1,10 @@
 @extends ('navbar')
 <link rel="stylesheet" href="{{ secure_asset('/assets/resumen.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @section('content')
 <div class="container">
     <h1 class="text-center">Resumen Clínico</h1>
 
-    <!-- Información General -->
     <div class="mb-3">
         <label for="consultaId" class="form-label">ID de Consulta Médica:</label>
         <input type="text" class="form-control" id="consultaId" disabled>
@@ -18,13 +18,11 @@
         <input type="text" class="form-control" id="fechaHora" disabled>
     </div>
 
-    <!-- Cuadro de resumen clínico -->
     <div class="summary-box">
         <h5>Resumen Clínico:</h5>
         <textarea class="form-control" rows="5" id="resumenClinico" placeholder="Escribe el resumen clínico aquí..."></textarea>
     </div>
 
-    <!-- Información del doctor -->
     <div class="mb-3">
         <label for="doctorNombre" class="form-label">Nombre del Doctor:</label>
         <input type="text" class="form-control" id="doctorNombre" disabled>
@@ -34,8 +32,8 @@
         <input type="text" class="form-control" id="doctorId" disabled>
     </div>
 
-    <!-- Botón de guardar -->
     <button type="button" class="btn btn-save" id="guardarResumen">Guardar</button>
+    <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
 </div>
 
 <script>
@@ -62,11 +60,9 @@
 
     let apiUrl = `/api/ver-un-resumen/${citaId}`;
     
-    // Realizar la solicitud GET
     fetch(apiUrl)
         .then(response => response.json())  
         .then(data => {
-            // Asignar los valores recibidos a los campos del formulario
             document.getElementById('consultaId').value = data.data.id_resumen_consulta;
             document.getElementById('pacienteNombre').value = data.data.nombre_paciente || ''; 
             document.getElementById('fechaHora').value = data.data.fecha_consulta;
@@ -78,7 +74,6 @@
             console.error('Error al obtener los datos de la cita:', error);
         });
 
-    // Manejar el botón de guardar
     document.getElementById('guardarResumen').addEventListener('click', function () {
         const idConsultaMedica = document.getElementById('consultaId').value;
         const nombrePaciente = document.getElementById('pacienteNombre').value;
@@ -87,7 +82,6 @@
         const fechaConsulta = document.getElementById('fechaHora').value;
         const resumenConsulta = document.getElementById('resumenClinico').value;
 
-        // Crear el objeto de datos
         const putData = {
             id_consulta_medica: idConsultaMedica,
             nombre_paciente: nombrePaciente,
@@ -97,13 +91,11 @@
             resumen_consulta: resumenConsulta
         };
 
-        // Validar campos requeridos
         if (!putData.id_consulta_medica || !putData.nombre_paciente || !putData.id_doctor || !putData.nombre_doctor || !putData.resumen_consulta) {
             alert('Todos los campos requeridos deben estar completos.');
             return;
         }
 
-        // Realizar la solicitud PUT
         fetch(`/api/actualizar-resumen/${idConsultaMedica}`, {
             method: 'PUT',
             headers: {
@@ -121,7 +113,11 @@
             console.error('Error al actualizar los datos:', error);
             alert('Ocurrió un error al actualizar los datos.');
         });
+        
     });
+    document.getElementById('cancelar').addEventListener('click', function () {
+            window.location.href = '/historial-resumen';
+        });
 });
 </script>
 @endsection

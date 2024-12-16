@@ -3,8 +3,6 @@
 @section('content')
 <div class="container">
     <h1 class="text-center">Resumen Clínico</h1>
-
-    <!-- Información General -->
     <div class="mb-3">
         <label for="consultaId" class="form-label">ID de Consulta Médica:</label>
         <input type="text" class="form-control" id="consultaId" disabled>
@@ -18,13 +16,11 @@
         <input type="text" class="form-control" id="fechaHora" disabled>
     </div>
 
-    <!-- Cuadro de resumen clínico -->
     <div class="summary-box">
         <h5>Resumen Clínico:</h5>
         <textarea class="form-control" rows="5" id="resumenClinico" placeholder="Escribe el resumen clínico aquí..."></textarea>
     </div>
 
-    <!-- Información del doctor -->
     <div class="mb-3">
         <label for="doctorNombre" class="form-label">Nombre del Doctor:</label>
         <input type="text" class="form-control" id="doctorNombre" disabled>
@@ -34,7 +30,6 @@
         <input type="text" class="form-control" id="doctorId" disabled>
     </div>
 
-    <!-- Botón de guardar -->
     <button type="button" class="btn btn-save" id="guardarResumen">Guardar</button>
 </div>
 <script> 
@@ -73,11 +68,9 @@
 
         let apiUrl = `/api/ver-una-cita/${citaId}`;
         
-        // Realizar la solicitud GET
         fetch(apiUrl)
             .then(response => response.json())  
             .then(data => {
-                // Asignar los valores recibidos a los campos del formulario
                 document.getElementById('consultaId').value = data.data.id_consultas;
                 document.getElementById('pacienteNombre').value = data.data.nombre_paciente || ''; 
                 document.getElementById('fechaHora').value = `${data.data.fecha_cita || ''} ${data.data.hora_consulta || ''}`;
@@ -88,7 +81,6 @@
                 console.error('Error al obtener los datos de la cita:', error);
             });
 
-        // Manejar el botón de guardar
         document.getElementById('guardarResumen').addEventListener('click', function () {
             const idConsultaMedica = document.getElementById('consultaId').value;
             const nombrePaciente = document.getElementById('pacienteNombre').value;
@@ -97,7 +89,6 @@
             const fechaConsulta = document.getElementById('fechaHora').value;
             const resumenConsulta = document.getElementById('resumenClinico').value;
 
-            // Crear el objeto de datos
             const postData = {
                 id_consulta_medica: idConsultaMedica,
                 nombre_paciente: nombrePaciente,
@@ -113,7 +104,6 @@
                 return;
             }
 
-            // Realizar la solicitud POST
             fetch('/api/crear-resumen', {
                 method: 'POST',
                 headers: {

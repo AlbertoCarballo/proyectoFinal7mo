@@ -2,7 +2,7 @@
 
 @section('content')
 
-<!--seccion consultas-->
+<!-- Sección de consultas -->
 <div class="mt-5">
     <h2 class="text-center mb-4" style="color: #00254d;">Historial de Consultas</h2>
 
@@ -11,9 +11,10 @@
         <label for="estatusFilter" class="form-label">Filtrar por Estatus:</label>
         <select id="estatusFilter" class="form-select" onchange="filtrar()">
             <option value="">Todos</option>
-            <option value="Completado">Completado</option>
             <option value="Pendiente">Pendiente</option>
-            <option value="Cancelado">Cancelado</option>
+            <option value="Cancelada">Cancelado</option>
+            <option value="Espera">Espera</option>
+            <option value="Confirmada">Confirmada</option>
         </select>
     </div>
 
@@ -37,7 +38,6 @@
     </div>
 </div>
 
-<!--filtrados js-->
 <script>
     window.onload = function() {
         fetchConsultas();
@@ -47,19 +47,18 @@
         const doctorId = localStorage.getItem('doctor_id');
         if (!doctorId) {
             Swal.fire({
-                        confirmButtonText: 'Aceptar',
-                        customClass: {
-                            confirmButton: 'btn btn-primary'
-                        },
-                        buttonsStyling: false,
-                        icon: 'error',
-                        title: '¡Error!',
-                        text: 'No ha iniciado sesion. Por favor, inicie sesion para acceder a esta pagina.',
-                        confirmButtonText: 'Aceptar',
-                    }).then(() => {
-                        window.location.href = '/';
-                        return;
-                    }) ;      
+                confirmButtonText: 'Aceptar',
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                },
+                buttonsStyling: false,
+                icon: 'error',
+                title: '¡Error!',
+                text: 'No ha iniciado sesión. Por favor, inicie sesión para acceder a esta página.',
+            }).then(() => {
+                window.location.href = '/';
+                return;
+            });
         }
         fetch('/api/ver-citas')
             .then(response => response.json())
@@ -73,7 +72,7 @@
 
     function mostrarConsultas(consultas) {
         let tableBody = document.getElementById('consultaTableBody');
-        tableBody.innerHTML = ''; 
+        tableBody.innerHTML = '';
 
         consultas.forEach(consulta => {
             let row = document.createElement('tr');
@@ -85,7 +84,7 @@
                 <td>${consulta.descripcion_problema}</td>
                 <td>${consulta.consultorio}</td>
                 <td>${consulta.nombre_doctor}</td>
-                <td class="text-${consulta.estado === 'completado' ? 'success' : 'warning'} fw-bold">${consulta.estado}</td>
+                <td class="text-${consulta.estado.toLowerCase() === 'completado' ? 'success' : 'warning'} fw-bold">${consulta.estado}</td>
             `;
             tableBody.appendChild(row);
         });
@@ -93,16 +92,14 @@
 
     function filtrar() {
         let estatus = document.getElementById("estatusFilter").value.toLowerCase();
-        let especialidad = document.getElementById("especialidadFilter").value.toLowerCase();
-        let rows = document.getElementById("consultaTable").getElementsByTagName("tr");
+        let rows = document.getElementById("consultaTable").getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
         for (let i = 0; i < rows.length; i++) {
             let row = rows[i];
-            let estatusCell = row.cells[9] ? row.cells[9].innerText.toLowerCase() : '';
-            let especialidadCell = row.cells[6] ? row.cells[6].innerText.toLowerCase() : '';
+            let estatusCell = row.cells[6] ? row.cells[6].innerText.toLowerCase() : '';
 
-            if ((estatus === "" || estatusCell.includes(estatus)) &&
-                (especialidad === "" || especialidadCell.includes(especialidad))) {
+            // Mostrar la fila solo si coincide con el filtro seleccionado o si no hay filtro
+            if (estatus === "" || estatusCell.includes(estatus)) {
                 row.style.display = "";
             } else {
                 row.style.display = "none";
@@ -110,5 +107,4 @@
         }
     }
 </script>
-
 @endsection

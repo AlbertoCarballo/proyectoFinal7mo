@@ -15,21 +15,17 @@
                     <div class="container">
                         <form id="appointmentForm" role="form">
                             <div class="controls">
-
-                                <!-- Fila de Paciente (Cargado dinámicamente) -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="paciente">Paciente *</label>
                                             <select id="paciente" name="id_paciente" class="form-control" required="required">
                                                 <option value="">Seleccionar paciente</option>
-                                                <!-- Opciones cargadas dinámicamente desde JS -->
                                             </select>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Fila de Especialidad y Fecha -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -46,7 +42,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Fila de Descripción -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -56,12 +51,10 @@
                                     </div>
                                 </div>
 
-                                <!-- Fila de Consultorio -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="consultorio">Consultorio *</label>
-                                            <!-- Ahora es un label con el valor del localStorage -->
                                             <label id="consultorioLabel" class="form-control"></label>
                                         </div>
                                     </div>
@@ -78,10 +71,9 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Botón de guardar -->
                                 <div class="col-md-12" style="margin-top: 20px;">
                                     <button type="submit" class="btn btn-primary btn-send pt-2 btn-block">Generar cita</button>
+                                    <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
                                 </div>
                             </div>
                         </form>
@@ -92,7 +84,6 @@
     </div>
 </div>
 
-<!-- Mostrar Cita Generada -->
 <div class="result-container" id="resultContainer" style="display:none;">
     <h4 class="text-center">Cita Generada</h4>
     <table class="w-100 result-table">
@@ -127,9 +118,7 @@
     });
 });
 </script>
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Script para obtener los pacientes y manejar el envío del formulario -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const doctorId = localStorage.getItem('doctor_id');
@@ -165,7 +154,6 @@
                 console.error('Error al cargar los pacientes:', error);
             });
 
-        // Establecer el valor del consultorio desde el localStorage
         const consultorio = localStorage.getItem('consultorio');
         if (consultorio) {
             document.getElementById('consultorioLabel').textContent = consultorio;
@@ -206,7 +194,6 @@ document.getElementById('appointmentForm').addEventListener('submit', function(e
         return;
     }
 
-    // Enviar el formulario al backend
     fetch('/api/crear-cita', {
         method: 'POST',
         body: formData
@@ -225,6 +212,8 @@ document.getElementById('appointmentForm').addEventListener('submit', function(e
         alert('Error en el servidor.');
     });
 });
-
+document.getElementById('cancelar').addEventListener('click', function () {
+            window.location.href = '/home';
+        });
 </script>
 <!-- @endsection -->

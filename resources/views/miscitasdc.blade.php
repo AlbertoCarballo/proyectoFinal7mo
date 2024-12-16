@@ -6,17 +6,12 @@
 <div class="mt-5">
     <h2 class="text-center mb-4" style="color: #00254d;">Historial de Citas Médicas</h2>
 
-    <!-- Botón para programar cita -->
     <div class="text-center mb-4">
-        <!-- <button class="btn btn-primary btn-lg" onclick="crearCita()" style="border-radius: 30px; padding: 10px 40px;">
-            <i class="fas fa-calendar-plus me-2"></i> Programar Cita
-        </button> -->
         <a class="btn btn-primary btn-lg" href="crear-cita" style="border-radius: 30px; padding: 10px 40px;">
             <i class="fas fa-calendar-plus me-2"></i> Programar Cita
         </a>
     </div>
 
-    <!-- Tabla de citas médicas -->
     <div style="max-height: 400px; overflow-y: auto;">
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
@@ -31,32 +26,13 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr>
-                    <td>12345</td>
-                    <td>John Doe</td>
-                    <td>2024-11-28 10:00 AM</td>
-                    <td>Dolor abdominal persistente.</td>
-                    <td>Completado</td>
-                    <td>Consultorio 3</td>
-                    <td>
-                        <a class="btn btn-info btn-sm" href="resumen" title="Agregar Resumen"><i class="fas fa-file-alt"></i></a>
-                        <a class="btn btn-warning btn-sm" href="editar-cita" title="Editar Cita"><i class="fas fa-pencil-alt"></i></a>
-                        <a class="btn btn-danger btn-sm" href="#" title="Eliminar Cita"><i class="fas fa-trash-alt"></i></a>
-                    </td>
-                </tr> -->
-                
             </tbody>
         </table>
     </div>
 </div>
 
-
-
-<!-- jQuery -->
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Se tuvo que incluir porque eran muchos datos de la tabla -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const doctorId = localStorage.getItem('doctor_id');
@@ -79,7 +55,6 @@
 
         const apiUrl = `/api/ver-mis-citas/${doctorId}`;
 
-        // Petición a la API
         fetch(apiUrl)
             .then(response => {
                 if (!response.ok) {
@@ -153,9 +128,9 @@
             const apiUrl = `/api/borrar-cita/${citaId}`;
 
             fetch(apiUrl, {
-                method: 'DELETE', // Utilizamos el método DELETE
+                method: 'DELETE',  
                 headers: {
-                    'Content-Type': 'application/json', // Especificamos que estamos enviando JSON
+                    'Content-Type': 'application/json',  
                 },
             })
             .then(response => {
@@ -167,7 +142,7 @@
             .then(data => {
                 if (data.status === 200) {
                     alert('Cita eliminada correctamente');
-                    location.reload(); // Recarga la página para actualizar la tabla
+                    location.reload();  
                 } else {
                     alert('Error al eliminar la cita: ' + data.message);
                 }

@@ -14,8 +14,6 @@
                     <div class="container">
                         <form id="appointmentForm" role="form">
                             <div class="controls">
-
-                                <!-- Fila de Nombre -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -24,8 +22,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Fila de Fecha -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -35,7 +31,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Fila de Horario -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -45,7 +40,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Fila de Doctor -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -55,7 +49,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Fila de Descripción -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -65,7 +58,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Fila de Consultorio -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -75,7 +67,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Fila de Estado -->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -90,9 +81,9 @@
                                     </div>
                                 </div>
 
-                                <!-- Botón de guardar -->
                                 <div class="col-md-12" style="margin-top: 20px;">
                                     <button type="submit" class="btn btn-primary btn-send pt-2 btn-block">Guardar cambios</button>
+                                    <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
                                 </div>
                             </div>
                         </form>
@@ -143,42 +134,35 @@
 
 <script>
    document.addEventListener("DOMContentLoaded", function () {
-    // Obtener la parte final de la URL (el ID de la cita)
     let url = window.location.pathname;
     let citaId = url.substring(url.lastIndexOf('/') + 1);
 
-    // Hacer una solicitud GET utilizando el ID para obtener los datos actuales de la cita
     let apiUrl = `/api/ver-una-cita/${citaId}`;
     
-    // Realizar la solicitud GET
     fetch(apiUrl)
-        .then(response => response.json())  // Convertir la respuesta a JSON
+        .then(response => response.json())  
         .then(data => {
-            // Aquí puedes trabajar con los datos recibidos
             console.log("Datos de la cita:", data.data);
 
-            // Asignar los valores recibidos a los campos del formulario
             document.getElementById('nombre').value = data.data.nombre_paciente;
-            document.getElementById('fecha').value = data.data.fecha_cita || ''; // Asegurarse que sea una fecha válida
-            document.getElementById('horario').value = data.data.hora_consulta || ''; // Asegurarse que sea una hora válida
-            document.getElementById('doctorLabel').textContent = data.data.nombre_doctor || 'No asignado'; // Mostrar el nombre del doctor
+            document.getElementById('fecha').value = data.data.fecha_cita || ''; 
+            document.getElementById('horario').value = data.data.hora_consulta || ''; 
+            document.getElementById('doctorLabel').textContent = data.data.nombre_doctor || 'No asignado'; 
             document.getElementById('descripcion').value = data.data.descripcion_problema || '';
-            document.getElementById('consultorioLabel').textContent = data.data.consultorio || 'No asignado'; // Mostrar el consultorio
-            document.getElementById('estado').value = data.data.estado; // Mostrar el estado
+            document.getElementById('consultorioLabel').textContent = data.data.consultorio || 'No asignado'; 
+            document.getElementById('estado').value = data.data.estado; 
 
-            // Almacenar el id_paciente y id_doctor de los datos recibidos para la actualización
             const idPaciente = data.data.id_paciente;
             const idDoctor = data.data.id_doctor;
 
             // Manejar el envío del formulario
             document.getElementById('appointmentForm').addEventListener('submit', function (e) {
-                e.preventDefault();  // Prevenir el comportamiento por defecto del formulario
+                e.preventDefault(); 
 
-                // Recoger los datos del formulario, ahora usando los id_paciente y id_doctor de la respuesta GET
                 const data = {
-                    id_paciente: idPaciente,  // Ahora se usa el id_paciente de la respuesta
+                    id_paciente: idPaciente,  
                     nombre_paciente: document.getElementById('nombre').value,
-                    id_doctor: idDoctor,  // Ahora se usa el id_doctor de la respuesta
+                    id_doctor: idDoctor,  
                     nombre_doctor: document.getElementById('doctorLabel').textContent,
                     fecha_cita: document.getElementById('fecha').value,
                     hora_consulta: document.getElementById('horario').value,
@@ -191,16 +175,15 @@
                 fetch(`/api/actualizar-cita/${citaId}`, {
                     method: 'PUT',
                     headers: {
-                        'Content-Type': 'application/json', // Especificamos que estamos enviando JSON
+                        'Content-Type': 'application/json', 
                     },
-                    body: JSON.stringify(data), // Convertimos los datos en formato JSON
+                    body: JSON.stringify(data), 
                 })
                 .then(response => response.json())
                 .then(data => {
-                    // Aquí puedes mostrar un mensaje de éxito o redirigir
                     if (data.status === 200) {
                         alert('Cita actualizada correctamente');
-                        console.log(data);  // Puedes usarlo para mostrar el resultado
+                        console.log(data);  
                         window.location.href = '/mis-citas';
                     } else {
                         alert('Error al actualizar la cita: ' + data.message);
@@ -216,7 +199,9 @@
             console.error('Error al obtener los datos de la cita:', error);
         });
 });
-
+document.getElementById('cancelar').addEventListener('click', function () {
+            window.location.href = '/vista-consultas';
+        });
 
 </script>
 
