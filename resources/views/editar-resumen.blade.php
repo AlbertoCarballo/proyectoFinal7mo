@@ -62,7 +62,7 @@
     fetch(apiUrl)
         .then(response => response.json())  
         .then(data => {
-            document.getElementById('consultaId').value = data.data.id_resumen_consulta;
+            document.getElementById('consultaId').value = data.data.id_consulta_medica;
             document.getElementById('pacienteNombre').value = data.data.nombre_paciente || ''; 
             document.getElementById('fechaHora').value = data.data.fecha_consulta;
             document.getElementById('doctorNombre').value = data.data.nombre_doctor || 'No asignado'; 
