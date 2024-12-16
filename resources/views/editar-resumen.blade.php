@@ -33,7 +33,6 @@
     </div>
 
     <button type="button" class="btn btn-save" id="guardarResumen">Guardar</button>
-    <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
 </div>
 
 <script>
@@ -115,9 +114,6 @@
         });
         
     });
-    document.getElementById('cancelar').addEventListener('click', function () {
-            window.location.href = '/historial-resumen';
-        });
 });
 </script>
 @endsection

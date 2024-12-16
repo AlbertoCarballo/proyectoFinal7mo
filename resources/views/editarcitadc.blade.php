@@ -80,10 +80,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-12" style="margin-top: 20px;">
                                     <button type="submit" class="btn btn-primary btn-send pt-2 btn-block">Guardar cambios</button>
-                                    <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
                                 </div>
                             </div>
                         </form>
@@ -199,9 +197,6 @@
             console.error('Error al obtener los datos de la cita:', error);
         });
 });
-document.getElementById('cancelar').addEventListener('click', function () {
-            window.location.href = '/vista-consultas';
-        });
 
 </script>
 

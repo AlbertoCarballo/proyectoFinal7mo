@@ -73,7 +73,6 @@
                                 </div>
                                 <div class="col-md-12" style="margin-top: 20px;">
                                     <button type="submit" class="btn btn-primary btn-send pt-2 btn-block">Generar cita</button>
-                                    <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
                                 </div>
                             </div>
                         </form>
@@ -212,8 +211,5 @@ document.getElementById('appointmentForm').addEventListener('submit', function(e
         alert('Error en el servidor.');
     });
 });
-document.getElementById('cancelar').addEventListener('click', function () {
-            window.location.href = '/home';
-        });
 </script>
 <!-- @endsection -->
