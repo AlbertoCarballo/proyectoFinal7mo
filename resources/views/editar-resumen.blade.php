@@ -95,7 +95,7 @@
             return;
         }
 
-        fetch(`/api/actualizar-resumen/${idConsultaMedica}`, {
+        fetch(`/api/actualizar-resumen/${citaId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
